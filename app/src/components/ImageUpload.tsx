@@ -56,8 +56,8 @@ export function ImageUpload({ id, value, placeholder, onChange, height }: Props)
       }}
       style={{
         width: '100%', height: height ?? '100%', cursor: 'pointer', position: 'relative',
-        background: value ? `#000 url(${JSON.stringify(value).slice(1, -1)}) center/cover no-repeat` : '#f0ece6',
-        display: 'grid', placeItems: 'center', outline: dragOver ? '2px dashed #fa8317' : 'none',
+        background: value ? `#000 url(${JSON.stringify(value).slice(1, -1)}) center/cover no-repeat` : '#ffffff',
+        display: 'grid', placeItems: 'center', outline: dragOver ? '2px dashed #e8899b' : 'none',
         outlineOffset: -2,
       }}
     >
@@ -66,12 +66,12 @@ export function ImageUpload({ id, value, placeholder, onChange, height }: Props)
         onChange={e => { const f = e.target.files?.[0]; if (f) void handleFile(f); e.currentTarget.value = ''; }}
       />
       {!value && !busy && (
-        <span style={{ font: "600 8px/1 'Archivo',sans-serif", letterSpacing: '.08em', color: '#8f8b85', textAlign: 'center', padding: 4 }}>
+        <span style={{ font: "600 8px/1 'Archivo',sans-serif", letterSpacing: '.08em', color: '#93a8b8', textAlign: 'center', padding: 4 }}>
           {placeholder.toUpperCase()}
         </span>
       )}
       {busy && (
-        <span style={{ font: "600 8px/1 'Archivo',sans-serif", letterSpacing: '.08em', color: '#fa8317' }}>…</span>
+        <span style={{ font: "600 8px/1 'Archivo',sans-serif", letterSpacing: '.08em', color: '#e8899b' }}>…</span>
       )}
     </div>
   );

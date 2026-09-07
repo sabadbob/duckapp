@@ -48,7 +48,7 @@ export function TodayTab() {
             <DuckMark size={21} />
           </div>
           <div style={{ height: 10, background: 'var(--line)', overflow: 'hidden' }}>
-            <div style={{ height: '100%', width: `${pct}%`, background: 'linear-gradient(90deg,#4d545e 0%,#8f6a52 55%,#fa8317 100%)', transition: 'width .4s cubic-bezier(.3,.8,.3,1)' }} />
+            <div style={{ height: '100%', width: `${pct}%`, background: 'linear-gradient(90deg,#5c7185 0%,#9a7d94 55%,#e8899b 100%)', transition: 'width .4s cubic-bezier(.3,.8,.3,1)' }} />
           </div>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', marginTop: 6, font: "600 8.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--slate)' }}>
             <span>WAKE</span><span style={{ textAlign: 'center' }}>MIDDAY</span><span style={{ textAlign: 'right' }}>02:00 CUTOFF</span>
@@ -72,7 +72,7 @@ export function TodayTab() {
             <div style={{ font: "600 13px/1.4 'Archivo'", textAlign: 'right' }}>{r.you}</div>
             <div style={{ display: 'flex', gap: 11, alignItems: 'flex-start' }}>
               <DuckMark size={28} />
-              <div style={{ font: "400 16px/1.45 'Source Serif 4',serif", color: '#3a3a38', flex: 1 }}>{r.duck}</div>
+              <div style={{ font: "400 16px/1.45 'Source Serif 4',serif", color: '#2f3a44', flex: 1 }}>{r.duck}</div>
             </div>
           </div>
         ))}
@@ -87,13 +87,13 @@ export function TodayTab() {
           const isPostponed = it.postponed && !it.done;
           return (
             <button key={i} className="row" onClick={() => s.toggleLedgerItem(i)}>
-              <div style={{ width: 19, height: 19, flex: 'none', border: '2px solid var(--ink)', background: it.done ? '#232323' : 'transparent', display: 'grid', placeItems: 'center' }}>
-                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0ece6" strokeWidth="3.4" strokeLinecap="square" style={{ opacity: it.done ? 1 : 0 }}>
+              <div style={{ width: 19, height: 19, flex: 'none', border: '2px solid var(--ink)', background: it.done ? '#2f3a44' : 'transparent', display: 'grid', placeItems: 'center' }}>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="square" style={{ opacity: it.done ? 1 : 0 }}>
                   <path d="M4 12.5 L9.5 18 L20 6.5" />
                 </svg>
               </div>
-              <div style={{ flex: 1, font: "400 15px/1.25 'Source Serif 4',serif", color: it.done ? '#8f8b85' : isPostponed ? '#9a4d00' : '#232323', textDecoration: it.done ? 'line-through' : 'none' }}>{it.label}</div>
-              <div style={{ font: "600 9.5px/1.5 'Archivo'", letterSpacing: '.1em', color: it.done ? '#7d7a74' : isPostponed ? '#9a4d00' : (it.meta === 'DUE' || it.meta.includes('PIN-UP') ? '#9a4d00' : '#4d545e'), fontVariantNumeric: 'tabular-nums' }}>
+              <div style={{ flex: 1, font: "400 15px/1.25 'Source Serif 4',serif", color: it.done ? '#93a8b8' : isPostponed ? '#a8455e' : '#2f3a44', textDecoration: it.done ? 'line-through' : 'none' }}>{it.label}</div>
+              <div style={{ font: "600 9.5px/1.5 'Archivo'", letterSpacing: '.1em', color: it.done ? '#7d93a3' : isPostponed ? '#a8455e' : (it.meta === 'DUE' || it.meta.includes('PIN-UP') ? '#a8455e' : '#5c7185'), fontVariantNumeric: 'tabular-nums' }}>
                 {isPostponed ? '→ TMR' : it.meta}
               </div>
             </button>
@@ -111,7 +111,7 @@ export function TodayTab() {
             value={planDraft} onChange={e => setPlanDraft(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter' && planDraft.trim()) { s.addPlanItem(planDraft); setPlanDraft(''); } }}
             placeholder="e.g. Finish site model sections"
-            style={{ flex: 1, minWidth: 0, font: "400 14px/1 'Source Serif 4'", padding: '10px 10px', border: '2px solid #232323', background: 'transparent' }}
+            style={{ flex: 1, minWidth: 0, font: "400 14px/1 'Source Serif 4'", padding: '10px 10px', border: '2px solid #2f3a44', background: 'transparent' }}
           />
           <button className="btn2 btn2o" style={{ width: 'auto', padding: '10px 12px', fontSize: 10 }}
             onClick={() => { if (planDraft.trim()) { s.addPlanItem(planDraft); setPlanDraft(''); } }}>ADD</button>
@@ -136,14 +136,14 @@ export function TodayTab() {
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: 4, marginTop: 11 }}>
           {todayFrames.map(f => (
             <div key={f.id}>
-              <div style={{ aspectRatio: '1', background: '#f0ece6', filter: 'grayscale(1)' }}>
+              <div style={{ aspectRatio: '1', background: '#ffffff', filter: 'grayscale(1)' }}>
                 <ImageUpload id={`frame-${f.id}`} value={f.url} placeholder="" onChange={() => {}} />
               </div>
               <div style={{ font: "600 8px/1 'Archivo'", letterSpacing: '.1em', color: 'var(--slate)', marginTop: 4 }}>{bangkokTimeLabel(new Date(f.ts))}</div>
             </div>
           ))}
           <div>
-            <div style={{ aspectRatio: '1', background: '#f0ece6', filter: 'grayscale(1)' }}>
+            <div style={{ aspectRatio: '1', background: '#ffffff', filter: 'grayscale(1)' }}>
               <ImageUpload id="frame-new" value={null} placeholder="add now" onChange={url => s.addFrame(url)} />
             </div>
             <div style={{ font: "600 8px/1 'Archivo'", letterSpacing: '.1em', color: 'var(--slate)', marginTop: 4 }}>ADD NOW</div>

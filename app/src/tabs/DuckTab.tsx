@@ -9,6 +9,15 @@ import { midnightCountdownLabel, bangkokDayIndex } from '../lib/time';
 
 const WEEK_LETTERS = ['M', 'T', 'W', 'T', 'F', 'S', 'S'];
 
+// Each flock member gets a stable color variant (hashed off their uid) so
+// different people's ducks read as different characters, not one grey clone.
+const FLOCK_VARIANTS = ['#ffffff', '#3d4a55', '#a9c2d3', '#f3ddd8'];
+function variantFor(uid: string): string {
+  let h = 0;
+  for (let i = 0; i < uid.length; i++) h = (h * 31 + uid.charCodeAt(i)) >>> 0;
+  return FLOCK_VARIANTS[h % FLOCK_VARIANTS.length];
+}
+
 export function DuckTab() {
   const s = useApp();
   const si = stageIndex(s.streak);
@@ -55,8 +64,8 @@ export function DuckTab() {
         <div className="lbl">GROWTH</div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,minmax(0,1fr))', gap: 2, marginTop: 11 }}>
           {[0, 1, 2, 3, 4].map(i => {
-            const bg = i === si ? '#232323' : i < si ? '#8f8b85' : '#cbc7c1';
-            const ink = i === si ? '#f0ece6' : i < si ? '#f0ece6' : '#4d545e';
+            const bg = i === si ? '#2f3a44' : i < si ? '#93a8b8' : '#cfe2ee';
+            const ink = i === si ? '#ffffff' : i < si ? '#ffffff' : '#5c7185';
             return (
               <div key={i} style={{ background: bg, padding: '8px 5px 9px', minWidth: 0, overflow: 'hidden' }}>
                 <div style={{ font: "700 8px/1 'Archivo'", letterSpacing: '.06em', color: ink }}>{STAGE_RANGES[i]}</div>
@@ -74,8 +83,8 @@ export function DuckTab() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 2, marginTop: 11 }}>
           {s.week.map((v, i) => {
-            const bg = v === 1 ? '#232323' : v === 0 ? '#fa8317' : '#cbc7c1';
-            const ink = v === 1 ? '#f0ece6' : v === 0 ? '#232323' : '#4d545e';
+            const bg = v === 1 ? '#2f3a44' : v === 0 ? '#e8899b' : '#cfe2ee';
+            const ink = v === 1 ? '#ffffff' : v === 0 ? '#2f3a44' : '#5c7185';
             return (
               <div key={i} style={{ background: bg, aspectRatio: '1', display: 'grid', placeItems: 'center', font: "700 10px/1 'Archivo'", color: ink }}>
                 {WEEK_LETTERS[i]}
@@ -98,7 +107,7 @@ export function DuckTab() {
             <input
               value={codeInput} onChange={e => setCodeInput(e.target.value.toUpperCase())}
               placeholder="ENTER CODE" maxLength={6}
-              style={{ flex: 1, font: "600 11px/1 'Archivo'", letterSpacing: '.08em', border: '2px solid #232323', padding: '10px 8px', background: 'transparent', minWidth: 0 }}
+              style={{ flex: 1, font: "600 11px/1 'Archivo'", letterSpacing: '.08em', border: '2px solid #2f3a44', padding: '10px 8px', background: 'transparent', minWidth: 0 }}
             />
             <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9 }}
               onClick={() => codeInput && s.setFlockCode(codeInput)}>JOIN</button>
@@ -119,7 +128,7 @@ export function DuckTab() {
               return (
                 <div key={f.uid} style={{ display: 'flex', gap: 11, alignItems: 'center', padding: '10px 0', borderBottom: '1px solid var(--line)', background: mine ? 'var(--panel)' : 'transparent' }}>
                   <div style={{ width: 44, height: 38, flex: 'none', display: 'grid', placeItems: 'end center' }}>
-                    <FlockDuckMark geo={geo} fill={mine ? '#232323' : '#8f8b85'} />
+                    <FlockDuckMark geo={geo} fill={mine ? '#2f3a44' : variantFor(f.uid)} />
                   </div>
                   <div style={{ flex: 1, minWidth: 0 }}>
                     <div style={{ font: "400 15.5px/1.2 'Source Serif 4',serif" }}>{mine ? 'You' : f.name}</div>
@@ -169,8 +178,8 @@ export function DuckTab() {
           const can = points >= k.cost;
           return (
             <div key={k.id} style={{ display: 'flex', gap: 12, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid var(--line)', opacity: owned || can ? 1 : 0.45 }}>
-              <div style={{ width: 34, height: 34, flex: 'none', background: owned ? '#fa8317' : '#cbc7c1', display: 'grid', placeItems: 'center' }}>
-                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#232323" strokeWidth="1.9" strokeLinecap="square"><path d={k.d} /></svg>
+              <div style={{ width: 34, height: 34, flex: 'none', background: owned ? '#e8899b' : '#cfe2ee', display: 'grid', placeItems: 'center' }}>
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#2f3a44" strokeWidth="1.9" strokeLinecap="square"><path d={k.d} /></svg>
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ font: "400 15.5px/1.2 'Source Serif 4',serif" }}>{k.name}</div>
@@ -179,7 +188,7 @@ export function DuckTab() {
               <div style={{ font: "400 17px/1 'Source Serif 4',serif", fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap' }}>{k.cost}</div>
               <button
                 className="btn2" disabled={owned || !can}
-                style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: owned ? '#fa8317' : '#232323', background: owned ? '#fa8317' : 'transparent' }}
+                style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: owned ? '#e8899b' : '#2f3a44', background: owned ? '#e8899b' : 'transparent' }}
                 onClick={() => s.buySnack(k.id)}
               >
                 {owned ? 'FED' : 'FEED'}

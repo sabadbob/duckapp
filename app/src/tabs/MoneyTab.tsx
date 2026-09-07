@@ -4,7 +4,7 @@ import { TabScroll } from '../components/Shell';
 import { fetchBudgetSheet, sheetsConfigured, expenseCatsToSpendLines, type BudgetSheetData } from '../integrations/sheets';
 import { bangkokTimeLabel } from '../lib/time';
 
-const SLICE_COLORS = ['#fa8317', '#8f8b85', '#4d545e', '#6f6b66', '#cbc7c1', '#9a4d00'];
+const SLICE_COLORS = ['#e8899b', '#93a8b8', '#5c7185', '#7d93a3', '#cfe2ee', '#a8455e'];
 const SAVINGS_TARGET_PCT = 20; // common rule-of-thumb baseline the insight line compares against
 
 export function MoneyTab() {
@@ -85,21 +85,21 @@ export function MoneyTab() {
         {savingsInsight && (
           <div style={{ font: "400 13px/1.4 'Source Serif 4',serif", color: 'var(--panel)', marginTop: 11 }}>{savingsInsight}</div>
         )}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 14, borderTop: '1px solid #4d545e', paddingTop: 11 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 14, borderTop: '1px solid #5c7185', paddingTop: 11 }}>
           <span style={{ font: "600 8.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--grey)' }}>
             {data ? `SYNCED ${bangkokTimeLabel()}` : sheetsConfigured ? 'NOT CONNECTED' : 'GOOGLE SHEETS API KEY NOT SET'}
           </span>
-          <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, borderColor: '#f0ece6', color: '#f0ece6' }}
+          <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, borderColor: '#ffffff', color: '#ffffff' }}
             onClick={() => doSync(sheetIdInput || s.sheetId || '')} disabled={loading || !(sheetIdInput || s.sheetId)}>
             {loading ? 'SYNCING…' : 'RE-SYNC'}
           </button>
         </div>
         <div style={{ marginTop: 10, display: 'flex', gap: 6 }}>
           <input value={sheetIdInput} onChange={e => setSheetIdInput(e.target.value)} placeholder="paste your tracker's Sheet ID"
-            style={{ flex: 1, minWidth: 0, font: "500 10px/1 'Archivo'", padding: '9px 8px', background: 'transparent', border: '1px solid #4d545e', color: '#f0ece6' }} />
+            style={{ flex: 1, minWidth: 0, font: "500 10px/1 'Archivo'", padding: '9px 8px', background: 'transparent', border: '1px solid #5c7185', color: '#ffffff' }} />
           <button className="btn2 btn2o" style={{ width: 'auto', padding: '7px 9px', fontSize: 9 }} onClick={() => doSync(sheetIdInput)}>CONNECT</button>
         </div>
-        {error && <div style={{ font: "400 12px/1.4 'Source Serif 4',serif", color: '#fa8317', marginTop: 8 }}>{error}</div>}
+        {error && <div style={{ font: "400 12px/1.4 'Source Serif 4',serif", color: '#e8899b', marginTop: 8 }}>{error}</div>}
         {!data && !error && (
           <div style={{ font: "400 12px/1.4 'Source Serif 4',serif", color: 'var(--panel)', marginTop: 8 }}>
             Connect your Income and Expenses Tracker sheet above to pull real numbers — see MONEY setup in app/README.md.
@@ -130,7 +130,7 @@ export function MoneyTab() {
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
           <span className="lbl">INVESTING</span>
           {gain !== 0 && s.investedTotal > 0 && (
-            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.1em', color: gain >= 0 ? '#9a4d00' : 'var(--slate)' }}>
+            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.1em', color: gain >= 0 ? '#a8455e' : 'var(--slate)' }}>
               {gain >= 0 ? '+' : ''}{gainPct.toFixed(1)}%
             </span>
           )}
@@ -171,7 +171,7 @@ export function MoneyTab() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderBottom: '2px solid var(--ink)' }}>
         {['ALL', 'NEEDED', 'WANTS'].map((label, i) => (
-          <button key={label} className="tab" style={{ background: s.filt === i ? '#232323' : 'transparent', color: s.filt === i ? '#f0ece6' : '#4d545e', fontSize: 9, padding: '12px 0' }}
+          <button key={label} className="tab" style={{ background: s.filt === i ? '#2f3a44' : 'transparent', color: s.filt === i ? '#ffffff' : '#5c7185', fontSize: 9, padding: '12px 0' }}
             onClick={() => s.setFilt(i)}>{label}</button>
         ))}
       </div>
@@ -189,7 +189,7 @@ export function MoneyTab() {
           const overridden = s.wantOverrides[e.cat] !== undefined;
           return (
             <div key={e.cat} style={{ display: 'grid', gridTemplateColumns: '52px 1fr auto auto', gap: 10, alignItems: 'center', padding: '11px 0', borderBottom: '1px solid var(--line)' }}>
-              <span style={{ font: "600 8px/1 'Archivo'", letterSpacing: '.1em', color: e.need ? '#232323' : '#9a4d00' }}>{e.need ? 'NEED' : 'WANT'}</span>
+              <span style={{ font: "600 8px/1 'Archivo'", letterSpacing: '.1em', color: e.need ? '#2f3a44' : '#a8455e' }}>{e.need ? 'NEED' : 'WANT'}</span>
               <span style={{ font: "400 15px/1.2 'Source Serif 4',serif", minWidth: 0 }}>{e.name}</span>
               <span style={{ font: "400 15px/1.2 'Source Serif 4',serif", color: 'var(--slate)', fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', textAlign: 'right' }}>฿{e.amt.toLocaleString()}</span>
               <button

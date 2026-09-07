@@ -61,11 +61,11 @@ export function FoodTab() {
           Showing five real, verified Siam Square spots — tap a thumbnail to drop in your own photo. Set VITE_GOOGLE_MAPS_API_KEY for live places + real storefront photos near you.
         </div>
       )}
-      {error && <div style={{ padding: '10px 16px', font: "400 12px/1.4 'Source Serif 4',serif", color: '#9a4d00' }}>{error} — showing the starter list instead.</div>}
+      {error && <div style={{ padding: '10px 16px', font: "400 12px/1.4 'Source Serif 4',serif", color: '#a8455e' }}>{error} — showing the starter list instead.</div>}
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', borderBottom: '2px solid var(--ink)' }}>
         {['FASTEST', 'BEST RATED', 'CHEAPEST'].map((label, i) => (
-          <button key={label} className="tab" style={{ background: s.sort === i ? '#232323' : 'transparent', color: s.sort === i ? '#f0ece6' : '#4d545e', fontSize: 9, padding: '12px 0' }}
+          <button key={label} className="tab" style={{ background: s.sort === i ? '#2f3a44' : 'transparent', color: s.sort === i ? '#ffffff' : '#5c7185', fontSize: 9, padding: '12px 0' }}
             onClick={() => s.setSort(i)}>{label}</button>
         ))}
       </div>
@@ -75,7 +75,7 @@ export function FoodTab() {
           const saved = s.favs.includes(p.id);
           return (
             <div key={p.id} style={{ padding: '13px 0', borderBottom: '1px solid var(--line)', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
-              <div style={{ width: 52, height: 52, background: '#f0ece6', flex: 'none', filter: p.photoUrl ? 'none' : 'grayscale(1)' }}>
+              <div style={{ width: 52, height: 52, background: '#ffffff', flex: 'none', filter: p.photoUrl ? 'none' : 'grayscale(1)' }}>
                 {p.photoUrl ? (
                   <img src={p.photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
                 ) : (
@@ -88,16 +88,16 @@ export function FoodTab() {
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>
                   <div style={{ font: "400 16px/1.2 'Source Serif 4',serif" }}>{p.name}</div>
-                  <div style={{ font: "600 9.5px/1.4 'Archivo'", letterSpacing: '.1em', color: p.eta <= 12 ? '#9a4d00' : '#4d545e', whiteSpace: 'nowrap' }}>{p.eta} MIN{p.source === 'google' ? '*' : ''}</div>
+                  <div style={{ font: "600 9.5px/1.4 'Archivo'", letterSpacing: '.1em', color: p.eta <= 12 ? '#a8455e' : '#5c7185', whiteSpace: 'nowrap' }}>{p.eta} MIN{p.source === 'google' ? '*' : ''}</div>
                 </div>
                 <div style={{ font: "400 13px/1.35 'Source Serif 4',serif", color: 'var(--slate)', marginTop: 4 }}>{p.desc}</div>
                 <div style={{ display: 'flex', gap: 10, alignItems: 'center', marginTop: 9, font: "600 9px/1 'Archivo'", letterSpacing: '.1em', whiteSpace: 'nowrap' }}>
-                  <span style={{ color: '#232323', background: '#cbc7c1', padding: '4px 6px' }}>★ {p.rating.toFixed(1)}</span>
+                  <span style={{ color: '#2f3a44', background: '#cfe2ee', padding: '4px 6px' }}>★ {p.rating.toFixed(1)}</span>
                   <span style={{ color: 'var(--slate)' }}>{p.band} · ฿{p.baht}</span>
                   {p.kcal > 0 && <span style={{ color: 'var(--slate)' }}>{p.kcal} KCAL</span>}
                 </div>
                 <div style={{ display: 'flex', gap: 6, marginTop: 9 }}>
-                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: saved ? '#fa8317' : '#232323', background: saved ? '#fa8317' : 'transparent' }}
+                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: saved ? '#e8899b' : '#2f3a44', background: saved ? '#e8899b' : 'transparent' }}
                     onClick={() => s.toggleFav(p.id)}>{saved ? 'SAVED' : 'SAVE'}</button>
                   <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap' }}
                     onClick={() => s.orderPlace(p.name, p.kcal, p.baht)}>ORDER</button>

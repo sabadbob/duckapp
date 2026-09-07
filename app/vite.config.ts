@@ -13,8 +13,8 @@ export default defineConfig({
         name: 'Duck App',
         short_name: 'Duck',
         description: 'Streak, tasks, food, fitness, work and budget in one place.',
-        theme_color: '#232323',
-        background_color: '#e6e4e4',
+        theme_color: '#2f3a44',
+        background_color: '#dbe9f5',
         display: 'standalone',
         start_url: '/',
         icons: [

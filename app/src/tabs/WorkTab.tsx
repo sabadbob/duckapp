@@ -22,7 +22,7 @@ export function WorkTab() {
   const allP1Resolved = p1Indices.every(i => s.workDone.includes(i) || s.slipped.includes(i));
 
   const riskTag = s.slipped.length ? 'SLIP FLAGGED · HALF FAT KEPT' : allP1Resolved ? 'P1 CLEAR' : 'STREAK AT RISK';
-  const riskColor = allP1Resolved && !s.slipped.length ? '#232323' : '#fa8317';
+  const riskColor = allP1Resolved && !s.slipped.length ? '#2f3a44' : '#e8899b';
   const riskLine = s.slipped.length
     ? 'Flagged before midnight, so the streak survives at half — the duck slims but does not reset. Do not make it a habit.'
     : allP1Resolved
@@ -42,9 +42,9 @@ export function WorkTab() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(5,1fr)', gap: 2, marginTop: 15 }}>
           {DAY_NAMES.map((d, i) => (
-            <div key={d} style={{ background: i === 4 ? '#fa8317' : '#4d545e', padding: '8px 6px' }}>
-              <div style={{ font: "700 8px/1 'Archivo'", color: i === 4 ? '#232323' : '#f0ece6' }}>{d}</div>
-              <div style={{ font: "400 11px/1.2 'Source Serif 4',serif", color: i === 4 ? '#232323' : '#cbc7c1', marginTop: 5 }}>
+            <div key={d} style={{ background: i === 4 ? '#e8899b' : '#5c7185', padding: '8px 6px' }}>
+              <div style={{ font: "700 8px/1 'Archivo'", color: i === 4 ? '#2f3a44' : '#ffffff' }}>{d}</div>
+              <div style={{ font: "400 11px/1.2 'Source Serif 4',serif", color: i === 4 ? '#2f3a44' : '#cfe2ee', marginTop: 5 }}>
                 {i === 4 ? 'pin-up' : dayLabel(i)}
               </div>
             </div>
@@ -53,12 +53,12 @@ export function WorkTab() {
       </div>
 
       <div style={{ padding: '13px 16px 0' }}>
-        <div style={{ border: `2px solid ${riskColor}`, background: riskColor === '#fa8317' ? '#fa8317' : 'transparent', padding: '11px 12px' }}>
+        <div style={{ border: `2px solid ${riskColor}`, background: riskColor === '#e8899b' ? '#e8899b' : 'transparent', padding: '11px 12px' }}>
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', gap: 10 }}>
-            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.14em', color: '#232323', whiteSpace: 'nowrap' }}>{riskTag}</span>
-            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.12em', color: '#232323', whiteSpace: 'nowrap' }}>{midnightCountdownLabel()}</span>
+            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.14em', color: '#2f3a44', whiteSpace: 'nowrap' }}>{riskTag}</span>
+            <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.12em', color: '#2f3a44', whiteSpace: 'nowrap' }}>{midnightCountdownLabel()}</span>
           </div>
-          <div style={{ font: "400 14px/1.4 'Source Serif 4',serif", color: '#232323', marginTop: 8 }}>{riskLine}</div>
+          <div style={{ font: "400 14px/1.4 'Source Serif 4',serif", color: '#2f3a44', marginTop: 8 }}>{riskLine}</div>
         </div>
       </div>
 
@@ -70,21 +70,21 @@ export function WorkTab() {
         {DEFAULT_WORK.map((w, i) => {
           const done = s.workDone.includes(i);
           const slipped = s.slipped.includes(i);
-          const pBg = w.p === 'P1' ? '#fa8317' : w.p === 'P2' ? '#4d545e' : '#8f8b85';
-          const pInk = w.p === 'P1' ? '#232323' : '#f0ece6';
+          const pBg = w.p === 'P1' ? '#e8899b' : w.p === 'P2' ? '#5c7185' : '#93a8b8';
+          const pInk = w.p === 'P1' ? '#2f3a44' : '#ffffff';
           return (
             <div key={i} style={{ padding: '12px 0', borderBottom: '1px solid var(--line)', display: 'flex', gap: 11, alignItems: 'flex-start' }}>
               <span style={{ font: "700 9px/1.3 'Archivo'", letterSpacing: '.1em', color: pInk, background: pBg, padding: '4px 5px', whiteSpace: 'nowrap' }}>{w.p}</span>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8, alignItems: 'baseline' }}>
                   <span style={{ font: "400 15.5px/1.2 'Source Serif 4',serif" }}>{w.name}</span>
-                  <span style={{ font: "600 9px/1.3 'Archivo'", letterSpacing: '.1em', color: w.p === 'P1' ? '#9a4d00' : '#4d545e', whiteSpace: 'nowrap' }}>{w.due}</span>
+                  <span style={{ font: "600 9px/1.3 'Archivo'", letterSpacing: '.1em', color: w.p === 'P1' ? '#a8455e' : '#5c7185', whiteSpace: 'nowrap' }}>{w.due}</span>
                 </div>
                 <div style={{ font: "400 13.5px/1.4 'Source Serif 4',serif", color: 'var(--slate)', marginTop: 5 }}>{w.needs}</div>
                 <div style={{ display: 'flex', gap: 6, marginTop: 9 }}>
-                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: done ? '#fa8317' : '#232323', background: done ? '#fa8317' : 'transparent' }}
+                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: done ? '#e8899b' : '#2f3a44', background: done ? '#e8899b' : 'transparent' }}
                     onClick={() => s.markWorkDone(i)}>{done ? 'DONE +10' : 'MARK DONE'}</button>
-                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: slipped ? '#9a4d00' : '#8f8b85', color: slipped ? '#9a4d00' : '#4d545e' }}
+                  <button className="btn2" style={{ width: 'auto', padding: '7px 9px', fontSize: 9, whiteSpace: 'nowrap', borderColor: slipped ? '#a8455e' : '#93a8b8', color: slipped ? '#a8455e' : '#5c7185' }}
                     onClick={() => s.flagSlip(i)}>{slipped ? 'SLIP FLAGGED' : "CAN'T FINISH"}</button>
                 </div>
               </div>
@@ -103,7 +103,7 @@ export function WorkTab() {
             value={todoDraft} onChange={e => setTodoDraft(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter' && todoDraft.trim()) { s.addTodo(todoDraft); setTodoDraft(''); } }}
             placeholder="e.g. Email Aj Paul about court dimensions"
-            style={{ flex: 1, minWidth: 0, font: "400 14px/1 'Source Serif 4'", padding: '10px 10px', border: '2px solid #232323', background: 'transparent' }}
+            style={{ flex: 1, minWidth: 0, font: "400 14px/1 'Source Serif 4'", padding: '10px 10px', border: '2px solid #2f3a44', background: 'transparent' }}
           />
           <button className="btn2 btn2o" style={{ width: 'auto', padding: '10px 12px', fontSize: 10 }}
             onClick={() => { if (todoDraft.trim()) { s.addTodo(todoDraft); setTodoDraft(''); } }}>ADD</button>
@@ -117,13 +117,13 @@ export function WorkTab() {
           <div key={t.id} className="row" style={{ cursor: 'default' }}>
             <button
               onClick={() => s.toggleTodo(t.id)}
-              style={{ width: 19, height: 19, flex: 'none', border: '2px solid #232323', background: t.done ? '#232323' : 'transparent', display: 'grid', placeItems: 'center', padding: 0, cursor: 'pointer' }}
+              style={{ width: 19, height: 19, flex: 'none', border: '2px solid #2f3a44', background: t.done ? '#2f3a44' : 'transparent', display: 'grid', placeItems: 'center', padding: 0, cursor: 'pointer' }}
             >
-              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0ece6" strokeWidth="3.4" strokeLinecap="square" style={{ opacity: t.done ? 1 : 0 }}>
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#ffffff" strokeWidth="3.4" strokeLinecap="square" style={{ opacity: t.done ? 1 : 0 }}>
                 <path d="M4 12.5 L9.5 18 L20 6.5" />
               </svg>
             </button>
-            <span style={{ flex: 1, font: "400 15px/1.25 'Source Serif 4',serif", color: t.done ? '#8f8b85' : '#232323', textDecoration: t.done ? 'line-through' : 'none' }}>{t.label}</span>
+            <span style={{ flex: 1, font: "400 15px/1.25 'Source Serif 4',serif", color: t.done ? '#93a8b8' : '#2f3a44', textDecoration: t.done ? 'line-through' : 'none' }}>{t.label}</span>
             <button className="btn2" style={{ width: 'auto', padding: '4px 7px', fontSize: 8 }} onClick={() => s.removeTodo(t.id)}>REMOVE</button>
           </div>
         ))}
@@ -137,11 +137,11 @@ export function WorkTab() {
         <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0,1fr) minmax(0,1fr)', gap: 4 }}>
           {s.taste.map((t, i) => (
             <div key={t.id} style={{ minWidth: 0 }}>
-              <div style={{ height: i % 3 === 0 ? 150 : 112, background: '#f0ece6', filter: 'grayscale(1)' }}>
+              <div style={{ height: i % 3 === 0 ? 150 : 112, background: '#ffffff', filter: 'grayscale(1)' }}>
                 <ImageUpload id={`taste-${t.id}`} value={t.imageUrl} placeholder={t.caption || 'reference'} onChange={() => {}} />
               </div>
               <button
-                className="btn2" style={{ padding: '7px 8px', fontSize: 9, marginTop: 4, borderColor: t.kept ? '#fa8317' : '#232323', background: t.kept ? '#fa8317' : 'transparent' }}
+                className="btn2" style={{ padding: '7px 8px', fontSize: 9, marginTop: 4, borderColor: t.kept ? '#e8899b' : '#2f3a44', background: t.kept ? '#e8899b' : 'transparent' }}
                 onClick={() => s.keepTaste(t.id)}
               >
                 {t.kept ? 'KEPT' : 'KEEP'}
@@ -149,7 +149,7 @@ export function WorkTab() {
             </div>
           ))}
           <div style={{ minWidth: 0 }}>
-            <div style={{ height: 112, background: '#f0ece6', filter: 'grayscale(1)' }}>
+            <div style={{ height: 112, background: '#ffffff', filter: 'grayscale(1)' }}>
               <ImageUpload
                 id="taste-new" value={null} placeholder="add a reference"
                 onChange={url => { s.addTaste({ imageUrl: url, caption: captionDraft, kept: false }); setCaptionDraft(''); }}

@@ -31,11 +31,11 @@ export function BodyTab() {
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10, marginTop: 16 }}>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', font: "600 8.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--grey)' }}><span>PROTEIN</span><span>{protein} / 140 G</span></div>
-            <div style={{ height: 8, background: '#4d545e', marginTop: 7 }}><div style={{ height: '100%', width: `${proteinW}%`, background: 'var(--orange)', transition: 'width .4s' }} /></div>
+            <div style={{ height: 8, background: '#5c7185', marginTop: 7 }}><div style={{ height: '100%', width: `${proteinW}%`, background: 'var(--orange)', transition: 'width .4s' }} /></div>
           </div>
           <div>
             <div style={{ display: 'flex', justifyContent: 'space-between', font: "600 8.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--grey)' }}><span>CALORIES</span><span>{kcal} / 2700</span></div>
-            <div style={{ height: 8, background: '#4d545e', marginTop: 7 }}><div style={{ height: '100%', width: `${kcalW}%`, background: 'var(--cream)', transition: 'width .4s' }} /></div>
+            <div style={{ height: 8, background: '#5c7185', marginTop: 7 }}><div style={{ height: '100%', width: `${kcalW}%`, background: 'var(--cream)', transition: 'width .4s' }} /></div>
           </div>
         </div>
         <div style={{ font: "400 14px/1.4 'Source Serif 4',serif", color: 'var(--panel)', marginTop: 13 }}>{macroNote}</div>
@@ -48,9 +48,9 @@ export function BodyTab() {
         </div>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(7,1fr)', gap: 2, marginTop: 11 }}>
           {TRAIN_WEEK.map((d, i) => (
-            <div key={d.d} style={{ background: i === todayIdx ? '#232323' : '#cbc7c1', padding: '8px 4px' }}>
-              <div style={{ font: "700 8px/1 'Archivo'", color: i === todayIdx ? '#f0ece6' : '#4d545e' }}>{d.d}</div>
-              <div style={{ font: "400 10px/1.2 'Source Serif 4',serif", color: i === todayIdx ? '#cbc7c1' : '#4d545e', marginTop: 5 }}>{d.label}</div>
+            <div key={d.d} style={{ background: i === todayIdx ? '#2f3a44' : '#cfe2ee', padding: '8px 4px' }}>
+              <div style={{ font: "700 8px/1 'Archivo'", color: i === todayIdx ? '#ffffff' : '#5c7185' }}>{d.d}</div>
+              <div style={{ font: "400 10px/1.2 'Source Serif 4',serif", color: i === todayIdx ? '#cfe2ee' : '#5c7185', marginTop: 5 }}>{d.label}</div>
             </div>
           ))}
         </div>
@@ -72,7 +72,7 @@ export function BodyTab() {
             <div key={l.name} style={{ padding: '12px 0', borderBottom: '1px solid var(--line)' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
                 <span style={{ font: "400 16px/1.2 'Source Serif 4',serif" }}>{l.name}</span>
-                <span style={{ font: "600 9px/1 'Archivo'", letterSpacing: '.1em', color: l.reps > l.last ? '#9a4d00' : '#4d545e' }}>{delta}</span>
+                <span style={{ font: "600 9px/1 'Archivo'", letterSpacing: '.1em', color: l.reps > l.last ? '#a8455e' : '#5c7185' }}>{delta}</span>
               </div>
               <div style={{ display: 'flex', gap: 8, alignItems: 'center', marginTop: 9 }}>
                 <div style={{ font: "400 21px/1 'Source Serif 4',serif", fontVariantNumeric: 'tabular-nums', minWidth: 52 }}>{l.reps}</div>
