@@ -30,6 +30,8 @@ export function WorkTab() {
       : 'The pin-up model is P1 and unfinished. At 00:00 the streak ends by itself unless you mark it done or flag the slip.';
 
   const [captionDraft, setCaptionDraft] = useState('');
+  const [todoDraft, setTodoDraft] = useState('');
+  const todosDone = s.workTodos.filter(t => t.done).length;
 
   return (
     <TabScroll>
@@ -89,6 +91,42 @@ export function WorkTab() {
             </div>
           );
         })}
+      </div>
+
+      <div style={{ padding: '14px 16px 4px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <span className="lbl">TO-DO</span>
+        <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--slate)', whiteSpace: 'nowrap' }}>{todosDone} / {s.workTodos.length} DONE</span>
+      </div>
+      <div style={{ padding: '0 16px 14px' }}>
+        <div style={{ display: 'flex', gap: 6 }}>
+          <input
+            value={todoDraft} onChange={e => setTodoDraft(e.target.value)}
+            onKeyDown={e => { if (e.key === 'Enter' && todoDraft.trim()) { s.addTodo(todoDraft); setTodoDraft(''); } }}
+            placeholder="e.g. Email Aj Paul about court dimensions"
+            style={{ flex: 1, minWidth: 0, font: "400 14px/1 'Source Serif 4'", padding: '10px 10px', border: '2px solid #232323', background: 'transparent' }}
+          />
+          <button className="btn2 btn2o" style={{ width: 'auto', padding: '10px 12px', fontSize: 10 }}
+            onClick={() => { if (todoDraft.trim()) { s.addTodo(todoDraft); setTodoDraft(''); } }}>ADD</button>
+        </div>
+        {s.workTodos.length === 0 && (
+          <div style={{ font: "400 13px/1.4 'Source Serif 4',serif", color: 'var(--slate)', marginTop: 10 }}>
+            Loose work todos that don't need a P1/P2/P3 slot — meetings, emails, small stuff.
+          </div>
+        )}
+        {s.workTodos.map(t => (
+          <div key={t.id} className="row" style={{ cursor: 'default' }}>
+            <button
+              onClick={() => s.toggleTodo(t.id)}
+              style={{ width: 19, height: 19, flex: 'none', border: '2px solid #232323', background: t.done ? '#232323' : 'transparent', display: 'grid', placeItems: 'center', padding: 0, cursor: 'pointer' }}
+            >
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0ece6" strokeWidth="3.4" strokeLinecap="square" style={{ opacity: t.done ? 1 : 0 }}>
+                <path d="M4 12.5 L9.5 18 L20 6.5" />
+              </svg>
+            </button>
+            <span style={{ flex: 1, font: "400 15px/1.25 'Source Serif 4',serif", color: t.done ? '#8f8b85' : '#232323', textDecoration: t.done ? 'line-through' : 'none' }}>{t.label}</span>
+            <button className="btn2" style={{ width: 'auto', padding: '4px 7px', fontSize: 8 }} onClick={() => s.removeTodo(t.id)}>REMOVE</button>
+          </div>
+        ))}
       </div>
 
       <div style={{ padding: '14px 16px 4px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>

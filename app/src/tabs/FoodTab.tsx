@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useApp } from '../store';
 import { TabScroll } from '../components/Shell';
+import { ImageUpload } from '../components/ImageUpload';
 import { SEED_PLACES } from '../data';
 import { searchNearbyRestaurants, getUserLocation, placesConfigured } from '../integrations/places';
 import { isSameBangkokDate, isSameBangkokWeek } from '../lib/time';
@@ -57,7 +58,7 @@ export function FoodTab() {
 
       {!placesConfigured && (
         <div style={{ padding: '10px 16px', background: 'var(--panel)', font: "400 12px/1.4 'Source Serif 4',serif", color: 'var(--slate)' }}>
-          Showing five real Siam Square spots as a starting list. Set VITE_GOOGLE_MAPS_API_KEY to pull live places near you.
+          Showing five real, verified Siam Square spots — tap a thumbnail to drop in your own photo. Set VITE_GOOGLE_MAPS_API_KEY for live places + real storefront photos near you.
         </div>
       )}
       {error && <div style={{ padding: '10px 16px', font: "400 12px/1.4 'Source Serif 4',serif", color: '#9a4d00' }}>{error} — showing the starter list instead.</div>}
@@ -75,9 +76,14 @@ export function FoodTab() {
           return (
             <div key={p.id} style={{ padding: '13px 0', borderBottom: '1px solid var(--line)', display: 'flex', gap: 12, alignItems: 'flex-start' }}>
               <div style={{ width: 52, height: 52, background: '#f0ece6', flex: 'none', filter: p.photoUrl ? 'none' : 'grayscale(1)' }}>
-                {p.photoUrl
-                  ? <img src={p.photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
-                  : <div style={{ width: '100%', height: '100%', display: 'grid', placeItems: 'center', font: "600 7px/1.2 'Archivo'", color: '#8f8b85', textAlign: 'center', padding: 2 }}>store photo</div>}
+                {p.photoUrl ? (
+                  <img src={p.photoUrl} alt="" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                ) : (
+                  <ImageUpload
+                    id={`place-${p.id}`} value={s.placePhotos[p.id] ?? null} placeholder="add a photo"
+                    onChange={url => s.setPlacePhoto(p.id, url)}
+                  />
+                )}
               </div>
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', gap: 8 }}>

@@ -61,6 +61,10 @@ export function BodyTab() {
         <span className="lbl">BODYWEIGHT · {today.on ? today.label.toUpperCase() + ' DAY' : "TODAY'S A REST DAY"}</span>
         <span style={{ font: "600 9.5px/1 'Archivo'", letterSpacing: '.12em', color: 'var(--slate)', whiteSpace: 'nowrap' }}>NO GYM · NO KIT</span>
       </div>
+      <div style={{ padding: '0 16px 8px', display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+        <span style={{ font: "400 13px/1.3 'Source Serif 4',serif", color: 'var(--slate)' }}>Every rep you add feeds the duck — +1 point per rep, taken back if you undo it.</span>
+        <span style={{ font: "400 20px/1 'Source Serif 4',serif", fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap', marginLeft: 10 }}>{s.repPoints}</span>
+      </div>
       <div style={{ padding: '0 16px' }}>
         {s.lifts.map((l, i) => {
           const delta = l.reps > l.last ? `+${l.reps - l.last}` : 'HOLDING';

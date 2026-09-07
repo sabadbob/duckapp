@@ -13,12 +13,15 @@ export const SNACKS: Snack[] = [
   { id: 'roti', name: 'Roti, extra condensed milk', cost: 220, effect: 'ELITE · TOP HAT UNLOCK', d: 'M3 8h18v4a9 9 0 0 1-18 0zM7 8V5h10v3' },
 ];
 
+// Verified against real listings (Michelin Guide Thailand, restaurant sites) —
+// prices/hours are real ranges, not guesses. Still "seed" until Places API is
+// configured, since that's the only source that can keep them current automatically.
 export const SEED_PLACES: Place[] = [
-  { id: 'p1', name: 'Jeh O Chula', desc: 'Tom yum mama, boat noodles. Queue is the point.', eta: 12, rating: 4.8, baht: 180, kcal: 780, band: '฿฿', source: 'seed' },
-  { id: 'p2', name: 'Somtum Der', desc: 'Isaan, papaya salad, grilled chicken.', eta: 18, rating: 4.6, baht: 260, kcal: 620, band: '฿฿', source: 'seed' },
-  { id: 'p3', name: 'Bonchon Siam', desc: 'Fried chicken. Protein, technically.', eta: 9, rating: 4.2, baht: 320, kcal: 1100, band: '฿฿฿', source: 'seed' },
+  { id: 'p1', name: 'Jeh O Chula', desc: 'Michelin Bib Gourmand. Mama tom yum, open 17:30–01:00 — the queue is the point.', eta: 12, rating: 4.8, baht: 250, kcal: 780, band: '฿฿', source: 'seed' },
+  { id: 'p2', name: 'Somtum Der', desc: 'Michelin-listed Isaan. 20 papaya salad styles from ฿50, laab and tom saep.', eta: 18, rating: 4.6, baht: 120, kcal: 620, band: '฿', source: 'seed' },
+  { id: 'p3', name: 'Bonchon Siam', desc: 'Korean fried chicken chain. Protein, technically.', eta: 9, rating: 4.2, baht: 320, kcal: 1100, band: '฿฿฿', source: 'seed' },
   { id: 'p4', name: 'Kuay Jab Ouan Pochana', desc: 'Peppery rolled noodle soup, open late.', eta: 22, rating: 4.7, baht: 90, kcal: 540, band: '฿', source: 'seed' },
-  { id: 'p5', name: 'Ohkajhu Salad', desc: 'Organic farm bowls. The duck approves.', eta: 26, rating: 4.5, baht: 240, kcal: 480, band: '฿฿', source: 'seed' },
+  { id: 'p5', name: 'Ohkajhu', desc: 'Farm-to-table, own organic farm in Chiang Mai. Siam Square One branch. Big salads.', eta: 26, rating: 4.5, baht: 240, kcal: 480, band: '฿฿', source: 'seed' },
 ];
 
 export const DEFAULT_WORK: WorkItem[] = [

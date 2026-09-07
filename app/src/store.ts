@@ -37,11 +37,17 @@ function freshUserDoc(displayName: string): UserDoc {
     slipped: [],
     ledger: DEFAULT_LEDGER.map(i => ({ ...i })),
     ledgerDateIso: bangkokDateIso(),
+    tomorrowPlan: [],
     sheetId: null,
     sheetSyncedAt: null,
     wantOverrides: {},
     proteinBase: 88,
     kcalBase: 1840,
+    investedTotal: 0,
+    investPosition: 0,
+    placePhotos: {},
+    repPoints: 0,
+    workTodos: [],
   };
 }
 
@@ -59,8 +65,13 @@ interface AppState extends UserDoc {
   setTab: (t: TabId) => void;
   toggleLedgerItem: (i: number) => void;
   say: (you: string, duckLine: string) => void;
-  didIt: () => void;
-  cantDo: () => void;
+  didIt: (i: number) => void;
+  cantDo: (i: number) => void;
+  addPlanItem: (label: string, meta?: string) => void;
+  removePlanItem: (i: number) => void;
+  setInvestedTotal: (n: number) => void;
+  setInvestPosition: (n: number) => void;
+  setPlacePhoto: (placeId: string, url: string) => void;
   keepTaste: (id: string) => void;
   addTaste: (entry: Omit<TasteEntry, 'id' | 'createdAt'>) => void;
   addFrame: (url: string) => void;
@@ -71,6 +82,9 @@ interface AppState extends UserDoc {
   orderPlace: (name: string, kcal: number, baht: number) => void;
   adjustLift: (i: number, delta: number) => void;
   logSession: () => void;
+  addTodo: (label: string) => void;
+  toggleTodo: (id: string) => void;
+  removeTodo: (id: string) => void;
   setSort: (n: number) => void;
   setFilt: (n: number) => void;
   closeDay: () => void;
@@ -106,12 +120,14 @@ function docFromState(s: AppState): UserDoc {
   const {
     displayName, flockCode, streak, best, week, weekStartIso, lastCloseDateIso, log, sort,
     favs, orders, lifts, taste, frames, filt, synced, poked, fed, spent, workDone, slipped, ledger,
-    ledgerDateIso, sheetId, sheetSyncedAt, proteinBase, kcalBase, wantOverrides,
+    ledgerDateIso, tomorrowPlan, sheetId, sheetSyncedAt, proteinBase, kcalBase, wantOverrides,
+    investedTotal, investPosition, placePhotos, repPoints, workTodos,
   } = s;
   return {
     displayName, flockCode, streak, best, week, weekStartIso, lastCloseDateIso, log, sort,
     favs, orders, lifts, taste, frames, filt, synced, poked, fed, spent, workDone, slipped, ledger,
-    ledgerDateIso, sheetId, sheetSyncedAt, proteinBase, kcalBase, wantOverrides,
+    ledgerDateIso, tomorrowPlan, sheetId, sheetSyncedAt, proteinBase, kcalBase, wantOverrides,
+    investedTotal, investPosition, placePhotos, repPoints, workTodos,
   };
 }
 
@@ -126,17 +142,23 @@ function loadGuest(): UserDoc | null {
   } catch { return null; }
 }
 
-const SASS_DID_IT = [
-  "Logged. Try not to look so surprised at yourself.",
-  "There it is. Don't make a whole ceremony out of it.",
-  "Noted — and yes, I'm keeping count.",
-  "Fine, that counts. Don't get used to praise.",
-];
-const SASS_CANT = [
-  "Fine — honest beats silent. It moves to tomorrow and the streak survives, once.",
-  "Alright. One slip, logged out loud instead of quietly ignored.",
-  "Noted. I'm not thrilled, but lying about it would be worse.",
-];
+function sassDidIt(label: string): string {
+  const lines = [
+    `"${label}" — logged. Try not to look so surprised at yourself.`,
+    `"${label}" done. Don't make a whole ceremony out of it.`,
+    `Noted: "${label}". I'm keeping count, don't worry.`,
+    `Fine, "${label}" counts. Don't get used to praise.`,
+  ];
+  return lines[Math.floor(Math.random() * lines.length)];
+}
+function sassPostpone(label: string): string {
+  const lines = [
+    `"${label}" pushed to tomorrow. Honest beats silent — once, not a pattern.`,
+    `Fine — "${label}" moves to tomorrow's list. It doesn't just vanish.`,
+    `Noted. "${label}" carries over. I'm not thrilled, but lying about it would be worse.`,
+  ];
+  return lines[Math.floor(Math.random() * lines.length)];
+}
 
 export const useApp = create<AppState>((set, get) => ({
   ...freshUserDoc('You'),
@@ -185,7 +207,9 @@ export const useApp = create<AppState>((set, get) => ({
   setTab: (t) => set({ tab: t }),
 
   toggleLedgerItem: (i) => {
-    set(s => ({ ledger: s.ledger.map((it, n) => (n === i ? { ...it, done: !it.done } : it)) }));
+    set(s => ({
+      ledger: s.ledger.map((it, n) => (n === i ? { ...it, done: !it.done, postponed: it.done ? it.postponed : false } : it)),
+    }));
     scheduleWrite(get);
   },
 
@@ -193,8 +217,34 @@ export const useApp = create<AppState>((set, get) => ({
     set(s => ({ log: [...s.log, { you, duck: duckLine } as ChatLine] }));
     scheduleWrite(get);
   },
-  didIt: () => get().say('Did it', SASS_DID_IT[Math.floor(Math.random() * SASS_DID_IT.length)]),
-  cantDo: () => get().say("Can't today", SASS_CANT[Math.floor(Math.random() * SASS_CANT.length)]),
+  didIt: (i) => {
+    const item = get().ledger[i];
+    if (!item) return;
+    set(s => ({ ledger: s.ledger.map((it, n) => (n === i ? { ...it, done: true, postponed: false } : it)) }));
+    get().say('Did it', sassDidIt(item.label));
+  },
+  cantDo: (i) => {
+    const item = get().ledger[i];
+    if (!item) return;
+    set(s => ({ ledger: s.ledger.map((it, n) => (n === i ? { ...it, postponed: true } : it)) }));
+    get().say("Can't today", sassPostpone(item.label));
+  },
+
+  addPlanItem: (label, meta) => {
+    if (!label.trim()) return;
+    set(s => ({ tomorrowPlan: [...s.tomorrowPlan, { label: label.trim(), meta: meta ?? '' }] }));
+    scheduleWrite(get);
+  },
+  removePlanItem: (i) => {
+    set(s => ({ tomorrowPlan: s.tomorrowPlan.filter((_, n) => n !== i) }));
+    scheduleWrite(get);
+  },
+  setInvestedTotal: (n) => { set({ investedTotal: Math.max(0, n) }); scheduleWrite(get); },
+  setInvestPosition: (n) => { set({ investPosition: Math.max(0, n) }); scheduleWrite(get); },
+  setPlacePhoto: (placeId, url) => {
+    set(s => ({ placePhotos: { ...s.placePhotos, [placeId]: url } }));
+    scheduleWrite(get);
+  },
 
   keepTaste: (id) => {
     set(s => ({ taste: s.taste.map(t => (t.id === id ? { ...t, kept: !t.kept } : t)) }));
@@ -243,15 +293,38 @@ export const useApp = create<AppState>((set, get) => ({
     scheduleWrite(get);
   },
 
+  // Points scale with actual reps done: +1 point per rep added, and undoing
+  // a tap takes the point back (clamped at 0) so spamming +1/-1 can't farm it.
   adjustLift: (i, delta) => {
-    set(s => ({
-      lifts: s.lifts.map((l, n) => (n === i ? { ...l, reps: Math.max(0, l.reps + delta) } : l)),
-    }));
+    set(s => {
+      const lift = s.lifts[i];
+      if (!lift) return s;
+      const newReps = Math.max(0, lift.reps + delta);
+      const actualDelta = newReps - lift.reps;
+      return {
+        lifts: s.lifts.map((l, n) => (n === i ? { ...l, reps: newReps } : l)),
+        repPoints: Math.max(0, s.repPoints + actualDelta),
+      };
+    });
     scheduleWrite(get);
   },
   logSession: () => {
-    set(s => ({ ledger: s.ledger.map((it, n) => (n === 0 ? { ...it, done: true } : it)) }));
+    set(s => ({ ledger: s.ledger.map((it, n) => (n === 0 ? { ...it, done: true } : it)), repPoints: s.repPoints + 15 }));
     get().say('Logged the session', 'Reps are up. That is the whole game without a gym — same movement, one more rep, every week.');
+  },
+
+  addTodo: (label) => {
+    if (!label.trim()) return;
+    set(s => ({ workTodos: [...s.workTodos, { id: crypto.randomUUID(), label: label.trim(), done: false, createdAt: Date.now() }] }));
+    scheduleWrite(get);
+  },
+  toggleTodo: (id) => {
+    set(s => ({ workTodos: s.workTodos.map(t => (t.id === id ? { ...t, done: !t.done } : t)) }));
+    scheduleWrite(get);
+  },
+  removeTodo: (id) => {
+    set(s => ({ workTodos: s.workTodos.filter(t => t.id !== id) }));
+    scheduleWrite(get);
   },
 
   setSort: (n) => set({ sort: n }),
@@ -302,10 +375,20 @@ export const useApp = create<AppState>((set, get) => ({
           patch = { ...patch, week: newWeek, streak: 0 };
         }
       }
+      // New day's ledger: carry over anything postponed yesterday, then add
+      // whatever was written in "Plan tomorrow", then fall back to the
+      // default list if neither left anything behind.
+      const carried: LedgerItem[] = s.ledger
+        .filter(it => it.postponed && !it.done)
+        .map(it => ({ label: it.label, meta: it.meta, done: false }));
+      const planned: LedgerItem[] = s.tomorrowPlan.map(p => ({ label: p.label, meta: p.meta || 'PLANNED', done: false }));
+      const nextLedger = [...carried, ...planned];
+
       patch = {
         ...patch,
-        ledger: DEFAULT_LEDGER.map(i => ({ ...i } as LedgerItem)),
+        ledger: nextLedger.length ? nextLedger : DEFAULT_LEDGER.map(i => ({ ...i } as LedgerItem)),
         ledgerDateIso: bangkokDateIso(),
+        tomorrowPlan: [],
         workDone: [],
         slipped: [],
       };
@@ -340,5 +423,5 @@ export const useApp = create<AppState>((set, get) => ({
 export function computePoints(s: UserDoc): number {
   const closedDays = s.week.filter(v => v === 1).length;
   const ledgerDone = s.ledger.filter(i => i.done).length;
-  return closedDays * 15 + (ledgerDone + s.workDone.length) * 10 - s.spent;
+  return closedDays * 15 + (ledgerDone + s.workDone.length) * 10 + s.repPoints - s.spent;
 }

@@ -5,6 +5,7 @@ export interface LedgerItem {
   label: string;
   meta: string;
   done: boolean;
+  postponed?: boolean; // carried to tomorrow via "Can't today" on this specific task
 }
 
 export interface Lift {
@@ -49,6 +50,13 @@ export interface Frame {
   caption: string;
 }
 
+export interface Todo {
+  id: string;
+  label: string;
+  done: boolean;
+  createdAt: number;
+}
+
 // Persisted per-user document: users/{uid}
 export interface UserDoc {
   displayName: string;
@@ -74,11 +82,17 @@ export interface UserDoc {
   slipped: number[];
   ledger: LedgerItem[];
   ledgerDateIso: string | null; // for daily ledger rollover
+  tomorrowPlan: { label: string; meta: string }[]; // written today, becomes tomorrow's ledger on rollover
   sheetId: string | null; // Google Sheet id for MONEY sync
   sheetSyncedAt: number | null;
   wantOverrides: Record<string, boolean>; // category name -> true if it's a "want", overrides the default guess
   proteinBase: number;
   kcalBase: number;
+  investedTotal: number; // manually-tracked, since the tracker has no brokerage data
+  investPosition: number;
+  placePhotos: Record<string, string>; // place id -> your own uploaded photo, for seed places without a live Places photo
+  repPoints: number; // earned from BODY rep increments, folds into total Duck Points
+  workTodos: Todo[]; // free-form to-dos in WORK, separate from the fixed P1/P2/P3 deliverables
 }
 
 // Denormalized row written to flocks/{code}/members/{uid} whenever streak/best change
