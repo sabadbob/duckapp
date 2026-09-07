@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..600&display=swap">
+<link rel="stylesheet" href="_ds/modernist-030caf00-3901-4434-9a58-90b945a1cf85/styles.css">
+<script src="_ds/modernist-030caf00-3901-4434-9a58-90b945a1cf85/_ds_bundle.js"></script>
+<script src="./image-slot.js"></script>
+<style>
+body{margin:0;background:#e6e4e4;font-family:"Source Serif 4",Georgia,serif;color:#232323;display:grid;place-items:start center;padding:28px 0}
+a{color:#9a4d00;text-decoration:none}a:hover{color:#fa8317}
+.lbl{font-family:"Archivo",sans-serif;font-weight:600;font-size:9.5px;line-height:1;letter-spacing:.16em;color:#4d545e}
+.btn2{font:600 11px/1 "Archivo",sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:13px 14px;border:2px solid #232323;background:transparent;color:#232323;cursor:pointer;text-align:left;width:100%}
+.btn2:hover{background:#232323;color:#f0ece6}
+.btn2:active{background:#9a4d00;border-color:#9a4d00;color:#fff}
+.btn2:focus-visible{outline:2px solid #fa8317;outline-offset:2px}
+.btn2o{border-color:#fa8317;color:#8a4300;background:#fa8317}
+.btn2o:hover{background:#232323;border-color:#232323;color:#fa8317}
+.tab{background:transparent;border:0;border-right:2px solid #232323;padding:9px 0 8px;display:grid;place-items:center;gap:5px;cursor:pointer;color:#4d545e;font:600 7px/1 "Archivo",sans-serif;letter-spacing:.06em;white-space:nowrap}
+.tab:last-child{border-right:0}
+.tab:hover{background:#cbc7c1}
+.tab:focus-visible{outline:2px solid #fa8317;outline-offset:-2px}
+.row{display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #b8b4ae;cursor:pointer;text-align:left;width:100%;background:transparent;border-left:0;border-right:0;border-top:0}
+.row:hover{background:#cbc7c1}
+</style></helmet>
+
+<div style="width:390px;background:#d8d5d0;border:2px solid #232323;height:844px;display:flex;flex-direction:column;overflow:hidden">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:9px 16px 8px;font:600 10.5px/1 'Archivo';letter-spacing:.1em;color:#4d545e"><span>01:24</span><span>MON 07 SEP · WK 37</span></div>
+
+  <sc-if value="{{ isStreak }}" hint-placeholder-val="{{ true }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="background:#232323;padding:15px 16px 13px;display:flex;align-items:flex-end;justify-content:space-between">
+      <div>
+        <div class="lbl" style="color:#8f8b85">CURRENT STREAK</div>
+        <div style="font:400 72px/0.82 'Source Serif 4',serif;color:#f0ece6;margin-top:10px;font-variant-numeric:tabular-nums">{{ streak }}</div>
+        <div class="lbl" style="color:#fa8317;margin-top:8px">{{ streakUnit }}</div>
+      </div>
+      <div style="text-align:right">
+        <div class="lbl" style="color:#8f8b85">BEST</div>
+        <div style="font:400 26px/1 'Source Serif 4',serif;color:#f0ece6;margin-top:8px;font-variant-numeric:tabular-nums">{{ best }}</div>
+        <div style="font:600 8px/1.4 'Archivo';letter-spacing:.1em;color:#8f8b85;margin-top:5px">MAR 2026</div>
+      </div>
+    </div>
+
+    <div style="padding:0;background:#cbc7c1;border-bottom:2px solid #232323">
+      <div style="padding:14px 16px 0">
+        <div class="lbl">{{ stageName }}</div>
+        <div style="font:400 15px/1.3 'Source Serif 4',serif;color:#232323;margin-top:6px;max-width:250px">{{ stageNote }}</div>
+      </div>
+      <div style="height:262px;display:grid;place-items:end center;position:relative;overflow:hidden">
+        <sc-if value="{{ isS0 }}" hint-placeholder-val="{{ false }}">
+        <svg width="360" height="286" viewBox="36 46 288 240" style="display:block">
+          <line x1="0" y1="250" x2="360" y2="250" stroke="#232323" stroke-width="2"></line>
+          <ellipse cx="180" cy="250" rx="34" ry="5" fill="#232323" opacity="0.13"></ellipse>
+          <path d="M168 250 L182 250 L175 241 Z M186 250 L200 250 L193 241 Z" fill="#fa8317"></path>
+          <path d="M170 194 l5 -13 l5 11 l5 -13 l5 15 z" fill="#eba76a"></path>
+          <ellipse cx="180" cy="221" rx="45" ry="30" fill="#f2e2b0" stroke="#eba76a" stroke-width="5"></ellipse>
+          <circle cx="152" cy="226" r="5.5" fill="#f0a878" opacity="0.5"></circle>
+          <circle cx="208" cy="226" r="5.5" fill="#f0a878" opacity="0.5"></circle>
+          <path d="M174 218 q6 -4 12 0 q-6 11 -12 0 z" fill="#fa8317"></path>
+          <circle cx="165" cy="213" r="4.6" fill="#232323"></circle>
+          <circle cx="166.6" cy="211.4" r="1.5" fill="#f7f4ef"></circle>
+          <circle cx="195" cy="213" r="4.6" fill="#232323"></circle>
+          <circle cx="196.6" cy="211.4" r="1.5" fill="#f7f4ef"></circle>
+        </svg>
+        </sc-if>
+        <sc-if value="{{ isS1 }}" hint-placeholder-val="{{ false }}">
+        <svg width="360" height="286" viewBox="36 46 288 240" style="display:block">
+          <line x1="0" y1="250" x2="360" y2="250" stroke="#232323" stroke-width="2"></line>
+          <ellipse cx="180" cy="250" rx="46" ry="5.5" fill="#232323" opacity="0.13"></ellipse>
+          <path d="M160 250 L182 250 L171 240 Z M178 250 L200 250 L189 240 Z" fill="#fa8317"></path>
+          <ellipse cx="128" cy="204" rx="15" ry="23" fill="#f4e2a8" stroke="#eba76a" stroke-width="6"></ellipse>
+          <ellipse cx="232" cy="204" rx="15" ry="23" fill="#f4e2a8" stroke="#eba76a" stroke-width="6"></ellipse>
+          <circle cx="180" cy="194" r="54" fill="#f4e2a8" stroke="#eba76a" stroke-width="6"></circle>
+          <circle cx="146" cy="196" r="7" fill="#f0a878" opacity="0.5"></circle>
+          <circle cx="214" cy="196" r="7" fill="#f0a878" opacity="0.5"></circle>
+          <path d="M168 189 q12 -6 24 0 q-12 14 -24 0 z" fill="#fa8317"></path>
+          <circle cx="159" cy="180" r="6" fill="#232323"></circle>
+          <circle cx="161" cy="177.6" r="2" fill="#f7f4ef"></circle>
+          <circle cx="201" cy="180" r="6" fill="#232323"></circle>
+          <circle cx="203" cy="177.6" r="2" fill="#f7f4ef"></circle>
+        </svg>
+        </sc-if>
+        <sc-if value="{{ isS2 }}" hint-placeholder-val="{{ false }}">
+        <svg width="360" height="286" viewBox="36 46 288 240" style="display:block">
+          <line x1="0" y1="250" x2="360" y2="250" stroke="#232323" stroke-width="2"></line>
+          <ellipse cx="180" cy="250" rx="54" ry="6" fill="#232323" opacity="0.13"></ellipse>
+          <path d="M158 250 L180 250 L169 239 Z M180 250 L202 250 L191 239 Z" fill="#fa8317"></path>
+          <circle cx="180" cy="146" r="36" fill="#f7f4ef" stroke="#232323" stroke-width="6"></circle>
+          <ellipse cx="180" cy="204" rx="58" ry="45" fill="#f7f4ef" stroke="#232323" stroke-width="6"></ellipse>
+          <ellipse cx="180" cy="168" rx="30" ry="12" fill="#f7f4ef"></ellipse>
+          <path d="M170 172 l10 6 l10 -6 l-4 9 l4 9 l-10 -6 l-10 6 l4 -9 z" fill="#232323"></path>
+          <circle cx="152" cy="152" r="7.5" fill="#f0a878" opacity="0.5"></circle>
+          <circle cx="208" cy="152" r="7.5" fill="#f0a878" opacity="0.5"></circle>
+          <path d="M166 148 q14 -5 28 0 q-14 16 -28 0 z" fill="#fa8317" stroke="#d97a12" stroke-width="2"></path>
+          <circle cx="162" cy="138" r="5.4" fill="#232323"></circle>
+          <circle cx="164" cy="135.8" r="1.9" fill="#f7f4ef"></circle>
+          <circle cx="198" cy="138" r="5.4" fill="#232323"></circle>
+          <circle cx="200" cy="135.8" r="1.9" fill="#f7f4ef"></circle>
+        </svg>
+        </sc-if>
+        <sc-if value="{{ isS3 }}" hint-placeholder-val="{{ false }}">
+        <svg width="360" height="286" viewBox="36 46 288 240" style="display:block">
+          <line x1="0" y1="250" x2="360" y2="250" stroke="#232323" stroke-width="2"></line>
+          <ellipse cx="180" cy="250" rx="62" ry="6.5" fill="#232323" opacity="0.13"></ellipse>
+          <path d="M154 250 L178 250 L166 236 Z M190 250 L214 250 L202 236 Z" fill="#fa8317"></path>
+          <ellipse cx="178" cy="196" rx="56" ry="46" fill="#f7f4ef"></ellipse>
+          <path d="M194 154 l10 6 l10 -6 l-4 9 l4 9 l-10 -6 l-10 6 l4 -9 z" fill="#232323"></path>
+          <ellipse cx="152" cy="200" rx="26" ry="19" fill="#e9e4dc"></ellipse>
+          <circle cx="204" cy="136" r="33" fill="#f7f4ef"></circle>
+          <path d="M234 129 L270 141 L234 153 Z" fill="#fa8317"></path>
+          <path d="M238 141 L264 141" stroke="#c96a10" stroke-width="1.6"></path>
+          <circle cx="216" cy="129" r="12.5" fill="none" stroke="#232323" stroke-width="2"></circle>
+          <path d="M216 141.5 q-4 14 -14 20" stroke="#232323" stroke-width="1.6" fill="none"></path>
+          <circle cx="216" cy="129" r="5.6" fill="#232323"></circle>
+          <circle cx="218.4" cy="126.6" r="2.1" fill="#f7f4ef"></circle>
+          <circle cx="196" cy="146" r="7" fill="#f0a878" opacity="0.45"></circle>
+        </svg>
+        </sc-if>
+        <sc-if value="{{ isS4 }}" hint-placeholder-val="{{ false }}">
+        <svg width="360" height="286" viewBox="36 46 288 240" style="display:block">
+          <line x1="0" y1="250" x2="360" y2="250" stroke="#232323" stroke-width="2"></line>
+          <ellipse cx="180" cy="250" rx="74" ry="7" fill="#232323" opacity="0.13"></ellipse>
+          <path d="M148 250 L176 250 L162 235 Z M192 250 L220 250 L206 235 Z" fill="#fa8317"></path>
+          <ellipse cx="176" cy="186" rx="68" ry="55" fill="#f7f4ef"></ellipse>
+          <path d="M196 148 l12 7 l12 -7 l-5 11 l5 11 l-12 -7 l-12 7 l5 -11 z" fill="#232323"></path>
+          <ellipse cx="144" cy="190" rx="30" ry="22" fill="#e9e4dc"></ellipse>
+          <circle cx="208" cy="116" r="36" fill="#f7f4ef"></circle>
+          <path d="M180 84 h56 v-34 h-40 z" fill="#232323"></path>
+          <path d="M176 84 h64 v7 h-64 z" fill="#232323"></path>
+          <path d="M196 74 h36 v6 h-36 z" fill="#fa8317"></path>
+          <path d="M240 108 L280 121 L240 134 Z" fill="#fa8317"></path>
+          <path d="M244 121 L274 121" stroke="#c96a10" stroke-width="1.8"></path>
+          <circle cx="220" cy="109" r="14" fill="none" stroke="#232323" stroke-width="2.2"></circle>
+          <path d="M220 123 q-5 17 -17 23" stroke="#232323" stroke-width="1.8" fill="none"></path>
+          <circle cx="220" cy="109" r="6" fill="#232323"></circle>
+          <circle cx="222.6" cy="106.4" r="2.3" fill="#f7f4ef"></circle>
+          <circle cx="199" cy="128" r="7.5" fill="#f0a878" opacity="0.45"></circle>
+        </svg>
+        </sc-if>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323">
+      <div class="lbl">GROWTH</div>
+      <div style="display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;margin-top:11px">
+        <sc-for list="{{ stages }}" as="s" hint-placeholder-count="5">
+          <div style="background:{{ s.bg }};padding:8px 5px 9px;min-width:0;overflow:hidden">
+            <div style="font:700 8px/1 'Archivo';letter-spacing:.06em;color:{{ s.ink }}">{{ s.d }}</div>
+            <div style="font:600 8.5px/1.2 'Archivo',sans-serif;letter-spacing:.06em;color:{{ s.ink }};margin-top:7px">{{ s.n }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">THIS WEEK</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e">{{ weekDone }} / 7 CLOSED</span></div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:11px">
+        <sc-for list="{{ week }}" as="d" hint-placeholder-count="7">
+          <div style="background:{{ d.bg }};aspect-ratio:1;display:grid;place-items:center;font:700 10px/1 'Archivo';color:{{ d.ink }}">{{ d.c }}</div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">THE FLOCK</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">{{ flockNote }}</span></div>
+      <sc-for list="{{ flock }}" as="f" hint-placeholder-count="4">
+        <div style="display:flex;gap:11px;align-items:center;padding:10px 0;border-bottom:1px solid #b8b4ae;background:{{ f.bg }}">
+          <div style="width:44px;height:38px;flex:none;display:grid;place-items:end center">
+            <svg width="44" height="38" viewBox="0 0 52 46" style="display:block">
+              <line x1="6" y1="44" x2="46" y2="44" stroke="#b8b4ae" stroke-width="1.5"></line>
+              <g transform="translate(24 44)">
+                <ellipse cx="0" cy="{{ f.bCy }}" rx="{{ f.bRx }}" ry="{{ f.bRy }}" fill="{{ f.duckFill }}"></ellipse>
+                <circle cx="{{ f.hCx }}" cy="{{ f.hCy }}" r="{{ f.hR }}" fill="{{ f.duckFill }}"></circle>
+                <path d="{{ f.beak }}" fill="#fa8317"></path>
+              </g>
+            </svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font:400 15.5px/1.2 'Source Serif 4',serif">{{ f.name }}</div>
+            <div style="font:600 8.5px/1.4 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">{{ f.stage }} · BEST {{ f.best }}</div>
+          </div>
+          <div style="font:400 21px/1 'Source Serif 4',serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ f.streak }}</div>
+          <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap" onClick="{{ f.poke }}">{{ f.pokeLabel }}</button>
+        </div>
+      </sc-for>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:11px">{{ flockLine }}</div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:14px">
+        <div style="flex:1;min-width:0">
+          <div class="lbl" style="white-space:nowrap">DUCK POINTS</div>
+          <div style="font:400 34px/0.95 'Source Serif 4',serif;margin-top:9px;font-variant-numeric:tabular-nums">{{ points }}</div>
+        </div>
+        <div style="text-align:right;flex:none;font:600 8.5px/1.6 'Archivo';letter-spacing:.1em;color:#4d545e;white-space:nowrap">+10 PER TASK<br>+15 PER DAY CLOSED</div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:11px">{{ pointNote }}</div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">SNACK SHOP</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">{{ fedCount }} FED</span></div>
+      <sc-for list="{{ snacks }}" as="k" hint-placeholder-count="5">
+        <div style="display:flex;gap:12px;align-items:center;padding:11px 0;border-bottom:1px solid #b8b4ae;opacity:{{ k.op }}">
+          <div style="width:34px;height:34px;flex:none;background:{{ k.bg }};display:grid;place-items:center">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="{{ k.icon }}" stroke-width="1.9" stroke-linecap="square"><path d="{{ k.d }}"></path></svg>
+          </div>
+          <div style="flex:1;min-width:0">
+            <div style="font:400 15.5px/1.2 'Source Serif 4',serif">{{ k.name }}</div>
+            <div style="font:600 8.5px/1.4 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">{{ k.effect }}</div>
+          </div>
+          <div style="font:400 17px/1 'Source Serif 4',serif;font-variant-numeric:tabular-nums;white-space:nowrap">{{ k.cost }}</div>
+          <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap;border-color:{{ k.border }};background:{{ k.btnBg }}" onClick="{{ k.buy }}">{{ k.label }}</button>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding:14px 16px 18px;display:flex;flex-direction:column;gap:9px">
+      <button class="btn2 btn2o" onClick="{{ closeDay }}">Close the day — feed the duck +15</button>
+      <div style="border:2px solid #232323;padding:11px 12px">
+        <div class="lbl" style="color:#9a4d00">MIDNIGHT RULE</div>
+        <div style="font:400 14px/1.4 'Source Serif 4',serif;margin-top:8px">P1 work unfinished at 00:00 ends the streak on its own. It isn't a button you press — it's a deadline you either beat or you don't. Flag a slip in WORK before midnight and the duck keeps half his fat.</div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e">{{ streakNote }}</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isToday }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="padding:15px 16px 17px;border-bottom:2px solid #232323">
+      <div style="display:flex;align-items:flex-end;justify-content:space-between">
+        <div>
+          <div class="lbl">DAY PROGRESS</div>
+          <div style="font:400 40px/0.9 'Source Serif 4',serif;margin-top:9px;font-variant-numeric:tabular-nums">{{ pct }}<span style="font-size:19px">%</span></div>
+        </div>
+        <div style="font:400 14px/1.35 'Source Serif 4',serif;color:#4d545e;text-align:right;max-width:190px">{{ pctNote }}</div>
+      </div>
+      <div style="position:relative;margin-top:26px">
+        <div style="position:absolute;top:-25px;left:{{ mLeft }};transition:left .4s cubic-bezier(.3,.8,.3,1)">
+          <svg width="21" height="21" viewBox="0 0 48 48" style="display:block"><ellipse cx="20" cy="31" rx="14" ry="12" fill="#232323"></ellipse><circle cx="31" cy="16" r="9" fill="#232323"></circle><path d="M38 12 L48 16.5 L38 21 Z" fill="#fa8317"></path><circle cx="33" cy="14" r="1.7" fill="#f0ece6"></circle></svg>
+        </div>
+        <div style="height:10px;background:#b8b4ae;overflow:hidden">
+          <div style="height:100%;width:{{ pctW }};background:linear-gradient(90deg,#4d545e 0%,#8f6a52 55%,#fa8317 100%);transition:width .4s cubic-bezier(.3,.8,.3,1)"></div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);margin-top:6px;font:600 8.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e"><span>WAKE</span><span style="text-align:center">MIDDAY</span><span style="text-align:right">02:00 CUTOFF</span></div>
+      </div>
+    </div>
+
+    <div style="padding:14px 16px 16px;border-bottom:2px solid #232323;display:flex;flex-direction:column;gap:12px">
+      <div style="display:flex;gap:11px;align-items:flex-start">
+        <svg width="28" height="28" viewBox="0 0 48 48" style="flex:none;margin-top:3px"><ellipse cx="20" cy="31" rx="14" ry="12" fill="#232323"></ellipse><circle cx="31" cy="16" r="9" fill="#232323"></circle><path d="M38 12 L48 16.5 L38 21 Z" fill="#fa8317"></path><circle cx="33" cy="14" r="1.9" fill="#f0ece6"></circle></svg>
+        <div style="font:400 17px/1.4 'Source Serif 4',serif;flex:1">{{ prompt }}</div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding-left:39px">
+        <button class="btn2 btn2o" style="padding:11px 12px" onClick="{{ didIt }}">Did it</button>
+        <button class="btn2" style="padding:11px 12px" onClick="{{ cantDo }}">Can't today</button>
+      </div>
+      <sc-for list="{{ log }}" as="r" hint-placeholder-count="0">
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="font:600 13px/1.4 'Archivo';text-align:right">{{ r.you }}</div>
+          <div style="display:flex;gap:11px;align-items:flex-start">
+            <svg width="28" height="28" viewBox="0 0 48 48" style="flex:none;margin-top:3px"><ellipse cx="20" cy="31" rx="14" ry="12" fill="#232323"></ellipse><circle cx="31" cy="16" r="9" fill="#232323"></circle><path d="M38 12 L48 16.5 L38 21 Z" fill="#fa8317"></path><circle cx="33" cy="14" r="1.9" fill="#f0ece6"></circle></svg>
+            <div style="font:400 16px/1.45 'Source Serif 4',serif;color:#3a3a38;flex:1">{{ r.duck }}</div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding:12px 16px 4px;display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">TODAY'S LEDGER</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">{{ doneCount }} / {{ total }} DONE</span></div>
+    <div style="padding:0 16px">
+      <sc-for list="{{ items }}" as="it" hint-placeholder-count="7">
+        <button class="row" onClick="{{ it.toggle }}">
+          <div style="width:19px;height:19px;flex:none;border:2px solid #232323;background:{{ it.boxBg }};display:grid;place-items:center">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#f0ece6" stroke-width="3.4" stroke-linecap="square" style="opacity:{{ it.tickOp }}"><path d="M4 12.5 L9.5 18 L20 6.5"></path></svg>
+          </div>
+          <div style="flex:1;font:400 15px/1.25 'Source Serif 4',serif;color:{{ it.ink }};text-decoration:{{ it.deco }}">{{ it.label }}</div>
+          <div style="font:600 9.5px/1.5 'Archivo';letter-spacing:.1em;color:{{ it.metaInk }};font-variant-numeric:tabular-nums">{{ it.meta }}</div>
+        </button>
+      </sc-for>
+    </div>
+
+    <div style="margin-top:12px;border-top:2px solid #232323;background:#cbc7c1;padding:13px 16px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">TODAY'S FRAMES</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e">DROP A PHOTO</span></div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:11px">
+        <div><div style="aspect-ratio:1;background:#f0ece6;filter:grayscale(1)"><image-slot id="app-frame-1" shape="rect" placeholder="09:40"></image-slot></div><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">09:40 STUDIO</div></div>
+        <div><div style="aspect-ratio:1;background:#f0ece6;filter:grayscale(1)"><image-slot id="app-frame-2" shape="rect" placeholder="13:15"></image-slot></div><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">13:15 LUNCH</div></div>
+        <div><div style="aspect-ratio:1;background:#f0ece6;filter:grayscale(1)"><image-slot id="app-frame-3" shape="rect" placeholder="21:02"></image-slot></div><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">21:02 MODEL</div></div>
+        <div><div style="aspect-ratio:1;border:2px solid #232323;display:grid;place-items:center;color:#232323"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square"><path d="M12 5v14"></path><path d="M5 12h14"></path></svg></div><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e;margin-top:4px">ADD NOW</div></div>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isFood }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="background:#232323;padding:14px 16px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px">
+      <div style="flex:1;min-width:0">
+        <div class="lbl" style="color:#8f8b85;white-space:nowrap">NEAR YOU · SIAM SQUARE</div>
+        <div style="font:400 22px/1.15 'Source Serif 4',serif;color:#f0ece6;margin-top:8px">{{ foodLine }}</div>
+      </div>
+      <div style="text-align:right;flex:none"><div class="lbl" style="color:#8f8b85;white-space:nowrap">FOOD · FROM ฿6,000/MO</div><div style="font:400 22px/1 'Source Serif 4',serif;color:#fa8317;margin-top:7px;font-variant-numeric:tabular-nums">฿{{ budgetLeft }}</div></div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-bottom:2px solid #232323">
+      <button class="tab" style="background:{{ s0bg }};color:{{ s0ink }};font-size:9px;padding:12px 0" onClick="{{ sort0 }}">FASTEST</button>
+      <button class="tab" style="background:{{ s1bg }};color:{{ s1ink }};font-size:9px;padding:12px 0" onClick="{{ sort1 }}">BEST RATED</button>
+      <button class="tab" style="background:{{ s2bg }};color:{{ s2ink }};font-size:9px;padding:12px 0" onClick="{{ sort2 }}">CHEAPEST</button>
+    </div>
+
+    <div style="padding:0 16px">
+      <sc-for list="{{ places }}" as="p" hint-placeholder-count="5">
+        <div style="padding:13px 0;border-bottom:1px solid #b8b4ae;display:flex;gap:12px;align-items:flex-start">
+          <div style="width:52px;height:52px;background:#f0ece6;filter:grayscale(1);flex:none"><image-slot id="{{ p.slot }}" shape="rect" placeholder="store photo"></image-slot></div>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;justify-content:space-between;gap:8px">
+              <div style="font:400 16px/1.2 'Source Serif 4',serif">{{ p.name }}</div>
+              <div style="font:600 9.5px/1.4 'Archivo';letter-spacing:.1em;color:{{ p.etaInk }};white-space:nowrap">{{ p.eta }}</div>
+            </div>
+            <div style="font:400 13px/1.35 'Source Serif 4',serif;color:#4d545e;margin-top:4px">{{ p.desc }}</div>
+            <div style="display:flex;gap:10px;align-items:center;margin-top:9px;font:600 9px/1 'Archivo';letter-spacing:.1em;white-space:nowrap">
+              <span style="color:#232323;background:#cbc7c1;padding:4px 6px">★ {{ p.rating }}</span>
+              <span style="color:#4d545e">{{ p.price }}</span>
+              <span style="color:#4d545e">{{ p.kcal }} KCAL</span>
+            </div>
+            <div style="display:flex;gap:6px;margin-top:9px">
+              <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap;border-color:{{ p.favBorder }};color:{{ p.favInk }};background:{{ p.favBg }}" onClick="{{ p.fav }}">{{ p.favLabel }}</button>
+              <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap" onClick="{{ p.order }}">ORDER</button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="border-top:2px solid #232323;background:#cbc7c1;padding:13px 16px 16px;margin-top:12px">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">FAVOURITES</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e">{{ favCount }} SAVED</span></div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:9px">{{ favNote }}</div>
+      <sc-for list="{{ favs }}" as="f" hint-placeholder-count="0">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid #b8b4ae">
+          <span style="font:400 15px/1.2 'Source Serif 4',serif">{{ f.name }}</span>
+          <button class="btn2" style="width:auto;padding:6px 8px;font-size:9px" onClick="{{ f.order }}">ORDER AGAIN</button>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="border-top:2px solid #232323;padding:13px 16px 18px">
+      <div class="lbl">TODAY'S ORDERS → BODY</div>
+      <sc-for list="{{ orders }}" as="o" hint-placeholder-count="0">
+        <div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #b8b4ae;font:400 15px/1.2 'Source Serif 4',serif">
+          <span>{{ o.name }}</span><span style="font-variant-numeric:tabular-nums;color:#4d545e">{{ o.kcal }} kcal · ฿{{ o.baht }}</span>
+        </div>
+      </sc-for>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:11px">{{ orderNote }}</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isBody }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="background:#232323;padding:14px 16px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-end">
+        <div><div class="lbl" style="color:#8f8b85">LEAN BULK · WEEK 9</div><div style="font:400 30px/1 'Source Serif 4',serif;color:#f0ece6;margin-top:9px">60.4 <span style="font-size:15px;color:#8f8b85">kg</span></div></div>
+        <div style="text-align:right"><div class="lbl" style="color:#8f8b85">FROM 58.0</div><div style="font:400 18px/1 'Source Serif 4',serif;color:#fa8317;margin-top:9px">+2.4 kg</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px">
+        <div>
+          <div style="display:flex;justify-content:space-between;font:600 8.5px/1 'Archivo';letter-spacing:.12em;color:#8f8b85"><span>PROTEIN</span><span>{{ protein }} / 140 G</span></div>
+          <div style="height:8px;background:#4d545e;margin-top:7px"><div style="height:100%;width:{{ proteinW }};background:#fa8317;transition:width .4s"></div></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font:600 8.5px/1 'Archivo';letter-spacing:.12em;color:#8f8b85"><span>CALORIES</span><span>{{ kcal }} / 2700</span></div>
+          <div style="height:8px;background:#4d545e;margin-top:7px"><div style="height:100%;width:{{ kcalW }};background:#f0ece6;transition:width .4s"></div></div>
+        </div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#cbc7c1;margin-top:13px">{{ macroNote }}</div>
+    </div>
+
+    <div style="padding:13px 16px 16px;border-bottom:2px solid #232323">
+      <div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">TRAIN / REST · MY CALL</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">3 ON · 4 OFF</span></div>
+      <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-top:11px">
+        <div style="background:#232323;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">MON</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">push</div></div>
+        <div style="background:#cbc7c1;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#4d545e">TUE</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#4d545e;margin-top:5px">rest</div></div>
+        <div style="background:#232323;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">WED</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">pull</div></div>
+        <div style="background:#cbc7c1;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#4d545e">THU</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#4d545e;margin-top:5px">rest</div></div>
+        <div style="background:#cbc7c1;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#4d545e">FRI</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#4d545e;margin-top:5px">studio</div></div>
+        <div style="background:#232323;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">SAT</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">legs</div></div>
+        <div style="background:#cbc7c1;padding:8px 4px"><div style="font:700 8px/1 'Archivo';color:#4d545e">SUN</div><div style="font:400 10px/1.2 'Source Serif 4',serif;color:#4d545e;margin-top:5px">ball</div></div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:12px">Friday is nine hours of studio — training that day never survives, so it's a rest day by design, not by failure. Sunday basketball counts as the fourth.</div>
+    </div>
+
+    <div style="padding:13px 16px 4px;display:flex;justify-content:space-between;align-items:baseline">
+      <span class="lbl">BODYWEIGHT · PUSH DAY</span>
+      <span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">NO GYM · NO KIT</span>
+    </div>
+    <div style="padding:0 16px">
+      <sc-for list="{{ lifts }}" as="l" hint-placeholder-count="4">
+        <div style="padding:12px 0;border-bottom:1px solid #b8b4ae">
+          <div style="display:flex;justify-content:space-between;align-items:baseline">
+            <span style="font:400 16px/1.2 'Source Serif 4',serif">{{ l.name }}</span>
+            <span style="font:600 9px/1 'Archivo';letter-spacing:.1em;color:{{ l.deltaInk }}">{{ l.delta }}</span>
+          </div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:9px">
+            <div style="font:400 21px/1 'Source Serif 4',serif;font-variant-numeric:tabular-nums;min-width:52px">{{ l.reps }}</div>
+            <div style="font:600 9px/1.4 'Archivo';letter-spacing:.1em;color:#4d545e;flex:1;min-width:0">{{ l.scheme }} · LAST {{ l.last }}</div>
+            <button class="btn2" style="width:auto;padding:7px 10px;font-size:9px" onClick="{{ l.down }}">−1</button>
+            <button class="btn2 btn2o" style="width:auto;padding:7px 10px;font-size:9px" onClick="{{ l.up }}">+1</button>
+          </div>
+          <div style="font:400 13px/1.35 'Source Serif 4',serif;color:#4d545e;margin-top:7px">{{ l.next }}</div>
+        </div>
+      </sc-for>
+    </div>
+    <div style="padding:13px 16px 16px"><button class="btn2 btn2o" onClick="{{ logSession }}">Log session — tick the ledger</button></div>
+
+    <div style="border-top:2px solid #232323;background:#cbc7c1;padding:13px 16px 18px">
+      <div class="lbl">MEASUREMENTS · 178 CM</div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:2px;margin-top:11px">
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">CHEST</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">86</div></div>
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">WAIST</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">73</div></div>
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">HIP</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">92</div></div>
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">BACK</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">48</div></div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:12px">Basketball Sunday, volleyball Wednesday. Both count as cardio, neither counts as a session.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isWork }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="background:#232323;padding:14px 16px 16px">
+      <div class="lbl" style="color:#8f8b85">NEXT PIN-UP · 4 DAYS</div>
+      <div style="font:400 27px/1.05 'Source Serif 4',serif;color:#f0ece6;margin-top:9px">Arch Design II<br>site model + 2 sections</div>
+      <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:15px">
+        <div style="background:#4d545e;padding:8px 6px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">MON</div><div style="font:400 11px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">free</div></div>
+        <div style="background:#4d545e;padding:8px 6px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">TUE</div><div style="font:400 11px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">9–17</div></div>
+        <div style="background:#4d545e;padding:8px 6px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">WED</div><div style="font:400 11px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">9–16</div></div>
+        <div style="background:#4d545e;padding:8px 6px"><div style="font:700 8px/1 'Archivo';color:#f0ece6">THU</div><div style="font:400 11px/1.2 'Source Serif 4',serif;color:#cbc7c1;margin-top:5px">wine</div></div>
+        <div style="background:#fa8317;padding:8px 6px"><div style="font:700 8px/1 'Archivo';color:#232323">FRI</div><div style="font:400 11px/1.2 'Source Serif 4',serif;color:#232323;margin-top:5px">pin-up</div></div>
+      </div>
+    </div>
+
+    <div style="padding:13px 16px 0">
+      <div style="border:2px solid {{ riskBorder }};background:{{ riskBg }};padding:11px 12px">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
+          <span style="font:600 9.5px/1 'Archivo';letter-spacing:.14em;color:{{ riskInk }};white-space:nowrap">{{ riskTag }}</span>
+          <span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:{{ riskInk }};white-space:nowrap">22:36 TO 00:00</span>
+        </div>
+        <div style="font:400 14px/1.4 'Source Serif 4',serif;color:{{ riskInk }};margin-top:8px">{{ riskLine }}</div>
+      </div>
+    </div>
+    <div style="padding:13px 16px 4px;display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">DELIVERABLES · BY PRIORITY</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">THIS WEEK</span></div>
+    <div style="padding:0 16px">
+      <sc-for list="{{ work }}" as="w" hint-placeholder-count="5">
+        <div style="padding:12px 0;border-bottom:1px solid #b8b4ae;display:flex;gap:11px;align-items:flex-start">
+          <span style="font:700 9px/1.3 'Archivo';letter-spacing:.1em;color:{{ w.pInk }};background:{{ w.pBg }};padding:4px 5px;white-space:nowrap">{{ w.p }}</span>
+          <div style="flex:1;min-width:0">
+            <div style="display:flex;justify-content:space-between;gap:8px;align-items:baseline">
+              <span style="font:400 15.5px/1.2 'Source Serif 4',serif">{{ w.name }}</span>
+              <span style="font:600 9px/1.3 'Archivo';letter-spacing:.1em;color:{{ w.dueInk }};white-space:nowrap">{{ w.due }}</span>
+            </div>
+            <div style="font:400 13.5px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:5px">{{ w.needs }}</div>
+            <div style="display:flex;gap:6px;margin-top:9px">
+              <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap;border-color:{{ w.doneBorder }};background:{{ w.doneBg }}" onClick="{{ w.finish }}">{{ w.doneLabel }}</button>
+              <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;white-space:nowrap;border-color:{{ w.slipBorder }};color:{{ w.slipInk }}" onClick="{{ w.slip }}">{{ w.slipLabel }}</button>
+            </div>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+
+    <div style="padding:14px 16px 4px;display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">TASTE FEED</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e">{{ tasteNote }}</span></div>
+    <div style="padding:0 16px 14px">
+      <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px">
+        <div style="min-width:0"><div style="height:150px;background:#f0ece6;filter:grayscale(1)"><image-slot id="taste-1" shape="rect" placeholder="concrete detail"></image-slot></div><button class="btn2" style="padding:7px 8px;font-size:9px;margin-top:4px;border-color:{{ k1b }};background:{{ k1bg }}" onClick="{{ k1 }}">{{ k1l }}</button></div>
+        <div style="min-width:0"><div style="height:112px;background:#f0ece6;filter:grayscale(1)"><image-slot id="taste-2" shape="rect" placeholder="tailoring"></image-slot></div><button class="btn2" style="padding:7px 8px;font-size:9px;margin-top:4px;border-color:{{ k2b }};background:{{ k2bg }}" onClick="{{ k2 }}">{{ k2l }}</button></div>
+        <div style="min-width:0"><div style="height:112px;background:#f0ece6;filter:grayscale(1)"><image-slot id="taste-3" shape="rect" placeholder="temple joinery"></image-slot></div><button class="btn2" style="padding:7px 8px;font-size:9px;margin-top:4px;border-color:{{ k3b }};background:{{ k3bg }}" onClick="{{ k3 }}">{{ k3l }}</button></div>
+        <div><div style="height:150px;background:#f0ece6;filter:grayscale(1)"><image-slot id="taste-4" shape="rect" placeholder="render study"></image-slot></div><button class="btn2" style="padding:7px 8px;font-size:9px;margin-top:4px;border-color:{{ k4b }};background:{{ k4bg }}" onClick="{{ k4 }}">{{ k4l }}</button></div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:12px">{{ tasteLine }}</div>
+    </div>
+
+    <div style="border-top:2px solid #232323;background:#cbc7c1;padding:13px 16px 18px">
+      <div class="lbl">NUS TRACK</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin-top:11px">
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">GPA</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">3.0 →</div></div>
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">TARGET</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">3.5</div></div>
+        <div style="background:#d8d5d0;padding:10px 8px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">IELTS</div><div style="font:400 19px/1 'Source Serif 4',serif;margin-top:7px">7 → 8</div></div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:12px">Apply in 18 months. Every semester from here is the narrative.</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isMoney }}" hint-placeholder-val="{{ false }}">
+  <div style="border-top:2px solid #232323;flex:1;min-height:0;overflow:auto">
+    <div style="background:#232323;padding:14px 16px 16px">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start">
+        <div>
+          <div class="lbl" style="color:#8f8b85;white-space:nowrap">SEPTEMBER · MONTHLY IN</div>
+          <div style="font:400 34px/0.95 'Source Serif 4',serif;color:#f0ece6;margin-top:9px;font-variant-numeric:tabular-nums">฿25,000</div>
+        </div>
+        <div style="text-align:right">
+          <div class="lbl" style="color:#8f8b85;white-space:nowrap">UNSPENT</div>
+          <div style="font:400 22px/1 'Source Serif 4',serif;color:#fa8317;margin-top:9px;font-variant-numeric:tabular-nums">฿{{ unspent }}</div>
+        </div>
+      </div>
+      <div style="display:flex;height:12px;margin-top:16px">
+        <sc-for list="{{ splits }}" as="s" hint-placeholder-count="5">
+          <div style="width:{{ s.w }};background:{{ s.bg }}"></div>
+        </sc-for>
+      </div>
+      <div style="display:flex;gap:9px;flex-wrap:wrap;margin-top:9px;font:600 8px/1 'Archivo';letter-spacing:.1em;color:#8f8b85;white-space:nowrap">
+        <sc-for list="{{ splits }}" as="s" hint-placeholder-count="5">
+          <span style="color:{{ s.ink }}">{{ s.tag }}</span>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:14px;border-top:1px solid #4d545e;padding-top:11px">
+        <span style="font:600 8.5px/1 'Archivo';letter-spacing:.12em;color:#8f8b85">BUDGET_2026.XLSX · SYNCED 01:02</span>
+        <button class="btn2" style="width:auto;padding:7px 9px;font-size:9px;border-color:#f0ece6;color:#f0ece6" onClick="{{ resync }}">{{ syncLabel }}</button>
+      </div>
+    </div>
+
+    <div style="padding:13px 16px 4px;display:flex;justify-content:space-between;align-items:baseline">
+      <span class="lbl">INVESTING</span><span style="font:600 9.5px/1 'Archivo';letter-spacing:.12em;color:#4d545e;white-space:nowrap">16% OF IN</span>
+    </div>
+    <div style="padding:0 16px 14px">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:9px">
+        <div style="background:#cbc7c1;padding:11px 10px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">MONTHLY IN</div><div style="font:400 20px/1 'Source Serif 4',serif;margin-top:8px;font-variant-numeric:tabular-nums">฿4,000</div></div>
+        <div style="background:#cbc7c1;padding:11px 10px"><div style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:#4d545e">POSITION</div><div style="font:400 20px/1 'Source Serif 4',serif;margin-top:8px;font-variant-numeric:tabular-nums">฿48,200</div></div>
+      </div>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin-top:11px">Autopay on the 1st, before food money exists. Trading account is separate and stays small.</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #232323;border-bottom:2px solid #232323">
+      <button class="tab" style="background:{{ f0bg }};color:{{ f0ink }};font-size:9px;padding:12px 0" onClick="{{ filt0 }}">ALL</button>
+      <button class="tab" style="background:{{ f1bg }};color:{{ f1ink }};font-size:9px;padding:12px 0" onClick="{{ filt1 }}">NEEDED</button>
+      <button class="tab" style="background:{{ f2bg }};color:{{ f2ink }};font-size:9px;padding:12px 0" onClick="{{ filt2 }}">WANTS</button>
+    </div>
+    <div style="padding:0 16px">
+      <sc-for list="{{ spend }}" as="e" hint-placeholder-count="8">
+        <div style="padding:11px 0;border-bottom:1px solid #b8b4ae;display:flex;gap:10px;align-items:baseline">
+          <span style="font:600 8px/1 'Archivo';letter-spacing:.1em;color:{{ e.tagInk }};white-space:nowrap;min-width:52px">{{ e.tag }}</span>
+          <span style="font:400 15px/1.2 'Source Serif 4',serif;flex:1;min-width:0">{{ e.name }}</span>
+          <span style="font:400 15px/1.2 'Source Serif 4',serif;color:#4d545e;font-variant-numeric:tabular-nums;white-space:nowrap">฿{{ e.amt }}</span>
+        </div>
+      </sc-for>
+      <div style="font:400 14px/1.4 'Source Serif 4',serif;color:#4d545e;margin:12px 0 18px">{{ spendNote }}</div>
+    </div>
+  </div>
+  </sc-if>
+
+  <div style="border-top:2px solid #232323;display:grid;grid-template-columns:repeat(6,1fr);background:#d8d5d0;flex:none">
+    <button class="tab" style="background:{{ t0bg }};color:{{ t0ink }}" onClick="{{ go0 }}"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9"><circle cx="10" cy="15" r="6"></circle><circle cx="15" cy="8" r="4"></circle><path d="M18 7h4"></path></svg>DUCK</button>
+    <button class="tab" style="background:{{ t1bg }};color:{{ t1ink }}" onClick="{{ go1 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"><path d="M4 6h16"></path><path d="M4 12h16"></path><path d="M4 18h10"></path></svg>TODAY</button>
+    <button class="tab" style="background:{{ t4bg }};color:{{ t4ink }}" onClick="{{ go4 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"><path d="M4 20V9"></path><path d="M11 20V4"></path><path d="M18 20v-7"></path></svg>WORK</button>
+    <button class="tab" style="background:{{ t3bg }};color:{{ t3ink }}" onClick="{{ go3 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"><path d="M3 8v8"></path><path d="M7 5v14"></path><path d="M17 5v14"></path><path d="M21 8v8"></path><path d="M7 12h10"></path></svg>BODY</button>
+    <button class="tab" style="background:{{ t5bg }};color:{{ t5ink }}" onClick="{{ go5 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"><rect x="2.5" y="6.5" width="19" height="11"></rect><circle cx="12" cy="12" r="2.6"></circle></svg>MONEY</button>
+    <button class="tab" style="background:{{ t2bg }};color:{{ t2ink }}" onClick="{{ go2 }}"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="square"><path d="M5 3v18"></path><path d="M9 3v6a4 4 0 0 1-4 4"></path><path d="M15 21V3c3 0 4 3 4 6s-1 5-4 5"></path></svg>FOOD</button>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:420,&quot;height&quot;:900}}">
+class Component extends DCLogic {
+  state = { tab: 0, streak: 12, best: 41, week: [1,1,1,1,0,-1,-1], log: [], sort: 0, favs: ['p1'], orders: [],
+    lifts: [
+      { name: 'Push-ups', reps: 12, last: 10, scheme: '4 sets', next: 'Feet elevated at 15' },
+      { name: 'Pull-ups (park bar)', reps: 5, last: 4, scheme: '4 sets', next: 'Weighted once you hit 8' },
+      { name: 'Bulgarian split squat', reps: 10, last: 8, scheme: '3 sets / leg', next: 'Hold books, then dumbbells' },
+      { name: 'Pike push-ups', reps: 8, last: 6, scheme: '3 sets', next: 'Shoulder work until dumbbells' },
+      { name: 'Hollow hold', reps: 35, last: 30, scheme: 'seconds × 3', next: 'Add 5s a week' },
+    ],
+    taste: [1], filt: 0, synced: true, poked: [], fed: ['crumb'], spent: 20, workDone: [], slipped: [],
+    ledger: [
+      { label: 'Push day — 4 sets, no kit', meta: 'PUSH-UPS 12', done: false },
+      { label: 'Protein to 140 g', meta: '88 / 140', done: false },
+      { label: 'Post — sabadbob_', meta: 'DUE', done: false },
+      { label: 'Site model — block 2 hrs', meta: 'PIN-UP FRI', done: false },
+      { label: 'Read 10 pp — Contemp Theo', meta: 'WED 09:00', done: true },
+      { label: 'Chinese, 19:00', meta: 'IN 17H', done: true },
+      { label: 'In bed before 02:00', meta: 'AVG 03:40', done: false },
+    ] };
+  static PLACES = [
+    { id: 'p1', name: 'Jeh O Chula', desc: 'Tom yum mama, boat noodles. Queue is the point.', eta: 12, rating: 4.8, baht: 180, kcal: 780, band: '฿฿' },
+    { id: 'p2', name: 'Somtum Der', desc: 'Isaan, papaya salad, grilled chicken.', eta: 18, rating: 4.6, baht: 260, kcal: 620, band: '฿฿' },
+    { id: 'p3', name: 'Bonchon Siam', desc: 'Fried chicken. Protein, technically.', eta: 9, rating: 4.2, baht: 320, kcal: 1100, band: '฿฿฿' },
+    { id: 'p4', name: 'Kuay Jab Ouan Pochana', desc: 'Peppery rolled noodle soup, open late.', eta: 22, rating: 4.7, baht: 90, kcal: 540, band: '฿' },
+    { id: 'p5', name: 'Ohkajhu Salad', desc: 'Organic farm bowls. The duck approves.', eta: 26, rating: 4.5, baht: 240, kcal: 480, band: '฿฿' },
+  ];
+  toggle(i) { this.setState(s => ({ ledger: s.ledger.map((it, n) => n === i ? { ...it, done: !it.done } : it) })); }
+  static SNACKS = [
+    { id: 'crumb', name: 'Bread crumb', cost: 20, effect: 'BASIC · KEEPS HIM QUIET', d: 'M5 14h14M7 14a5 5 0 0 1 10 0' },
+    { id: 'cracker', name: 'Rice cracker', cost: 45, effect: 'CRUNCH · SMUG FOR A DAY', d: 'M4 4h16v16H4zM9 9h6v6H9z' },
+    { id: 'sesame', name: 'Sesame ball', cost: 80, effect: 'ROUND · VISIBLY ROUNDER', d: 'M12 4a8 8 0 1 0 0 16a8 8 0 1 0 0-16' },
+    { id: 'mango', name: 'Mango sticky rice', cost: 140, effect: 'PREMIUM · NEW BOW TIE', d: 'M4 18h16M6 18c0-6 12-6 12 0M10 6h4' },
+    { id: 'roti', name: 'Roti, extra condensed milk', cost: 220, effect: 'ELITE · TOP HAT UNLOCK', d: 'M3 8h18v4a9 9 0 0 1-18 0zM7 8V5h10v3' },
+  ];
+  static FRIENDS = [
+    { id: 'f1', name: 'Ploy · INDA', streak: 19, best: 22 },
+    { id: 'f2', name: 'Tar · Sleepless Season', streak: 11, best: 30 },
+    { id: 'f3', name: 'Beam · gym friend', streak: 4, best: 46 },
+    { id: 'f4', name: 'Nine · TRECC team', streak: 0, best: 8 },
+  ];
+  static SPEND = [
+    { name: 'Condo rent + water', amt: 8500, cat: 'FIXED', need: true },
+    { name: 'Food — cooked + delivery', amt: 6000, cat: 'FOOD', need: true },
+    { name: 'BTS + Grab to studio', amt: 1200, cat: 'TRAVEL', need: true },
+    { name: 'Phone + internet', amt: 400, cat: 'FIXED', need: true },
+    { name: 'Model + print materials', amt: 1500, cat: 'STUDIO', need: true },
+    { name: 'Wine class tastings', amt: 800, cat: 'OTHER', need: false },
+    { name: 'Content gear + SD cards', amt: 900, cat: 'OTHER', need: false },
+    { name: 'Weekend trips / shoots', amt: 1200, cat: 'TRAVEL', need: false },
+  ];
+  keep(n) { this.setState(s => ({ taste: s.taste.includes(n) ? s.taste.filter(x => x !== n) : [...s.taste, n] })); }
+  say(you, duck) { this.setState(s => ({ log: [...s.log, { you, duck }] })); }
+  ledgerDone() { return this.state.ledger.filter(it => it.done).length; }
+  points() { return this.state.week.filter(v => v === 1).length * 15 + (this.ledgerDone() + this.state.workDone.length) * 10 - this.state.spent; }
+
+  duck() {
+    // one growth curve: 0 days = tiny, 35+ = maximally round
+    const t = Math.min(1, this.state.streak / 35);
+    const s = (0.55 + t * 0.75) * 1.62;     // overall scale
+    const fat = t;                           // roundness bias
+    const bodyRx = (34 + fat * 30) * s, bodyRy = (30 + fat * 20) * s;
+    const bodyCy = -bodyRy;
+    const headR = (20 + fat * 7) * s;
+    const headCx = (bodyRx * 0.42), headCy = bodyCy - bodyRy * 0.72 - headR * 0.42;
+    const beakX = headCx + headR * 0.86, beakY = headCy + headR * 0.1;
+    const beakL = (16 + fat * 7) * s, beakH = (7 + fat * 3.5) * s;
+    return { s, fat, bodyRx, bodyRy, bodyCy, headR, headCx, headCy, beakX, beakY, beakL, beakH };
+  }
+
+  stageIndex() { const s = this.state.streak; return s < 1 ? 0 : s < 7 ? 1 : s < 14 ? 2 : s < 28 ? 3 : 4; }
+
+  renderVals() {
+    const d = this.duck(), st = this.state, si = this.stageIndex();
+    const names = ['HATCHLING', 'FLUFF', 'SQUARE MEALS', 'WELL FED', 'MAGNIFICENT'];
+    const notes = [
+      'Back to nothing. He fits in a teacup and he is not pleased.',
+      'A week of this and he stops looking like a golf ball.',
+      'Twelve days in. He has a silhouette now. Keep going.',
+      'Genuinely round. People would describe him as substantial.',
+      'Peak duck. Do not break this, I will never let you forget it.',
+    ];
+    const short = ['HATCH', 'FLUFF', 'SQUARE', 'WELL FED', 'MAGNIF.'];
+    const bump = i => ({ d: ['0', '1–6', '7–13', '14–27', '28+'][i], n: short[i],
+      bg: i === si ? '#232323' : (i < si ? '#8f8b85' : '#cbc7c1'),
+      ink: i === si ? '#f0ece6' : (i < si ? '#f0ece6' : '#4d545e') });
+
+    return {
+      isStreak: st.tab === 0, isToday: st.tab === 1, isFood: st.tab === 2, isBody: st.tab === 3, isWork: st.tab === 4,
+      work: [
+        { p: 'P1', name: 'Arch Design II — pin-up', due: 'FRI 09:00', needs: 'Site model 1:200, two sections inked, board layout. Model not started.' },
+        { p: 'P1', name: 'CV Tennis Shop — client set', due: 'WED', needs: 'Plan + court section, badminton bay dimensions confirmed with Aj Paul.' },
+        { p: 'P2', name: 'TRECC — tenant mix model', due: 'SUN', needs: 'Rental revenue per zone in Excel, anchor vs F&B split, one sensitivity case.' },
+        { p: 'P2', name: 'Pattaya market study', due: 'NEXT WK', needs: 'Beachfront vs near-beach ฿/sqm table, affordability layers, three comps.' },
+        { p: 'P3', name: 'Condo smart-home layout', due: 'OPEN', needs: 'Device plan per room, then the documentation shoot for the channel.' },
+      ].map((w, i) => ({ ...w,
+        pInk: w.p === 'P1' ? '#232323' : '#f0ece6',
+        pBg: w.p === 'P1' ? '#fa8317' : (w.p === 'P2' ? '#4d545e' : '#8f8b85'),
+        dueInk: w.p === 'P1' ? '#9a4d00' : '#4d545e',
+        doneLabel: st.workDone.includes(i) ? 'DONE +10' : 'MARK DONE',
+        doneBg: st.workDone.includes(i) ? '#fa8317' : 'transparent',
+        doneBorder: st.workDone.includes(i) ? '#fa8317' : '#232323',
+        finish: () => this.setState(s => ({ workDone: s.workDone.includes(i) ? s.workDone : [...s.workDone, i],
+          slipped: s.slipped.filter(x => x !== i) })),
+        slipLabel: st.slipped.includes(i) ? 'SLIP FLAGGED' : "CAN'T FINISH",
+        slipBorder: st.slipped.includes(i) ? '#9a4d00' : '#8f8b85',
+        slipInk: st.slipped.includes(i) ? '#9a4d00' : '#4d545e',
+        slip: () => this.setState(s => ({ slipped: s.slipped.includes(i) ? s.slipped.filter(x => x !== i) : [...s.slipped, i],
+          workDone: s.workDone.filter(x => x !== i) })),
+      })),
+      riskTag: st.slipped.length ? 'SLIP FLAGGED · HALF FAT KEPT' : (st.workDone.includes(0) ? 'P1 CLEAR' : 'STREAK AT RISK'),
+      riskBorder: st.workDone.includes(0) && !st.slipped.length ? '#232323' : '#fa8317',
+      riskBg: st.workDone.includes(0) && !st.slipped.length ? 'transparent' : '#fa8317',
+      riskInk: '#232323',
+      riskLine: st.slipped.length
+        ? 'Flagged before midnight, so the streak survives at half — the duck slims but does not reset. Do not make it a habit.'
+        : st.workDone.includes(0)
+          ? 'P1 is done. Midnight has nothing to take from you tonight.'
+          : 'The pin-up model is P1 and unfinished. At 00:00 the streak ends by itself unless you mark it done or flag the slip.',
+      tasteNote: st.taste.length + ' KEPT',
+      tasteLine: st.taste.length === 0
+        ? 'Keep a few and the feed leans that way — material, joinery, tailoring, whatever you keep picking.'
+        : 'Leaning ' + ['concrete + raw material', 'tailoring + drape', 'joinery + craft', 'render + light'][st.taste[st.taste.length - 1] - 1] + '. More of that next refresh.',
+      k1l: st.taste.includes(1) ? 'KEPT' : 'KEEP', k1bg: st.taste.includes(1) ? '#fa8317' : 'transparent', k1b: st.taste.includes(1) ? '#fa8317' : '#232323', k1: () => this.keep(1),
+      k2l: st.taste.includes(2) ? 'KEPT' : 'KEEP', k2bg: st.taste.includes(2) ? '#fa8317' : 'transparent', k2b: st.taste.includes(2) ? '#fa8317' : '#232323', k2: () => this.keep(2),
+      k3l: st.taste.includes(3) ? 'KEPT' : 'KEEP', k3bg: st.taste.includes(3) ? '#fa8317' : 'transparent', k3b: st.taste.includes(3) ? '#fa8317' : '#232323', k3: () => this.keep(3),
+      k4l: st.taste.includes(4) ? 'KEPT' : 'KEEP', k4bg: st.taste.includes(4) ? '#fa8317' : 'transparent', k4b: st.taste.includes(4) ? '#fa8317' : '#232323', k4: () => this.keep(4),
+      isMoney: st.tab === 5,
+      unspent: (25000 - 4000 - Component.SPEND.reduce((a, e) => a + e.amt, 0)).toLocaleString(),
+      splits: [
+        { tag: 'INVEST 16%', w: '16%', bg: '#fa8317', ink: '#fa8317' },
+        { tag: 'FIXED 36%', w: '35.6%', bg: '#f0ece6', ink: '#cbc7c1' },
+        { tag: 'FOOD 24%', w: '24%', bg: '#8f8b85', ink: '#8f8b85' },
+        { tag: 'TRAVEL 10%', w: '9.6%', bg: '#4d545e', ink: '#8f8b85' },
+        { tag: 'OTHER 7%', w: '6.8%', bg: '#6f6b66', ink: '#8f8b85' },
+      ],
+      syncLabel: st.synced ? 'SYNCED' : 'RE-SYNC',
+      resync: () => this.setState(s => ({ synced: !s.synced })),
+      spend: Component.SPEND
+        .filter(e => st.filt === 0 || (st.filt === 1 ? e.need : !e.need))
+        .map(e => ({ name: e.name, amt: e.amt.toLocaleString(), tag: e.cat,
+          tagInk: e.need ? '#232323' : '#9a4d00' })),
+      spendNote: st.filt === 2
+        ? '฿2,900 of wants. That is the number to cut when a month goes sideways — nothing above it.'
+        : st.filt === 1
+          ? '฿17,600 committed before you choose anything. Rent and food are 58% of the month.'
+          : 'Necessary ฿17,600 · wants ฿2,900 · invested ฿4,000. Excel keeps the categories, this keeps you honest.',
+      f0bg: st.filt === 0 ? '#232323' : 'transparent', f0ink: st.filt === 0 ? '#f0ece6' : '#4d545e',
+      f1bg: st.filt === 1 ? '#232323' : 'transparent', f1ink: st.filt === 1 ? '#f0ece6' : '#4d545e',
+      f2bg: st.filt === 2 ? '#232323' : 'transparent', f2ink: st.filt === 2 ? '#f0ece6' : '#4d545e',
+      filt0: () => this.setState({ filt: 0 }), filt1: () => this.setState({ filt: 1 }), filt2: () => this.setState({ filt: 2 }),
+      go5: () => this.setState({ tab: 5 }),
+      t5bg: st.tab === 5 ? '#232323' : 'transparent', t5ink: st.tab === 5 ? '#f0ece6' : '#4d545e',
+      dayLetter: 'A',
+      protein: 88 + st.orders.reduce((a, o) => a + Math.round(o.kcal * 0.055), 0),
+      proteinW: Math.min(100, (88 + st.orders.reduce((a, o) => a + Math.round(o.kcal * 0.055), 0)) / 140 * 100) + '%',
+      kcal: 1840 + st.orders.reduce((a, o) => a + o.kcal, 0),
+      kcalW: Math.min(100, (1840 + st.orders.reduce((a, o) => a + o.kcal, 0)) / 2700 * 100) + '%',
+      macroNote: (() => { const k = 1840 + st.orders.reduce((a, o) => a + o.kcal, 0);
+        if (k < 2200) return 'Under by ' + (2700 - k) + '. A bulk on paper only is just a diet with extra steps.';
+        if (k < 2700) return (2700 - k) + ' to go. One more real meal, not a snack.';
+        return 'Surplus hit. Protein is the only number left that matters.'; })(),
+      lifts: st.lifts.map((l, i) => ({
+        name: l.name, reps: l.reps, last: l.last, scheme: l.scheme, next: l.next,
+        delta: l.reps > l.last ? '+' + (l.reps - l.last) : 'HOLDING',
+        deltaInk: l.reps > l.last ? '#9a4d00' : '#4d545e',
+        up: () => this.setState(s => ({ lifts: s.lifts.map((x, n) => n === i ? { ...x, reps: x.reps + 1 } : x) })),
+        down: () => this.setState(s => ({ lifts: s.lifts.map((x, n) => n === i ? { ...x, reps: Math.max(0, x.reps - 1) } : x) })),
+      })),
+      logSession: () => { this.setState(s => ({ ledger: s.ledger.map((it, n) => n === 0 ? { ...it, done: true } : it), tab: 1 }));
+        this.say('Logged the session', 'Reps are up. That is the whole game without a gym — same movement, one more rep, every week.'); },
+      foodLine: st.orders.length ? 'Ordered. Sit down and eat it.' : "It's 1am. Something fast, then bed.",
+      budgetLeft: (1400 - st.orders.reduce((a, o) => a + o.baht, 0)).toLocaleString() + ' / WK',
+      places: [...Component.PLACES]
+        .sort((a, b) => st.sort === 0 ? a.eta - b.eta : st.sort === 1 ? b.rating - a.rating : a.baht - b.baht)
+        .map(p => ({
+          slot: 'food-' + p.id, name: p.name, desc: p.desc,
+          eta: p.eta + ' MIN', etaInk: p.eta <= 12 ? '#9a4d00' : '#4d545e',
+          rating: p.rating.toFixed(1), price: p.band + ' · ฿' + p.baht, kcal: p.kcal,
+          favLabel: st.favs.includes(p.id) ? 'SAVED' : 'SAVE',
+          favBg: st.favs.includes(p.id) ? '#fa8317' : 'transparent',
+          favBorder: st.favs.includes(p.id) ? '#fa8317' : '#232323',
+          favInk: st.favs.includes(p.id) ? '#232323' : '#232323',
+          fav: () => this.setState(s => ({ favs: s.favs.includes(p.id) ? s.favs.filter(x => x !== p.id) : [...s.favs, p.id] })),
+          order: () => this.setState(s => ({ orders: [...s.orders, { name: p.name, kcal: p.kcal, baht: p.baht }] })),
+        })),
+      favCount: st.favs.length,
+      favNote: st.favs.length ? 'Saved from what you actually liked, not what was cheapest.' : 'Nothing saved yet. Hit SAVE on anything you would eat twice.',
+      favs: st.favs.map(id => { const p = Component.PLACES.find(x => x.id === id); return { name: p.name,
+        order: () => this.setState(s => ({ orders: [...s.orders, { name: p.name, kcal: p.kcal, baht: p.baht }] })) }; }),
+      orders: st.orders,
+      orderNote: st.orders.length
+        ? st.orders.reduce((a, o) => a + o.kcal, 0) + ' kcal logged to BODY. Protein still needs work.'
+        : 'Nothing ordered today, which explains the 88 g of protein.',
+      s0bg: st.sort === 0 ? '#232323' : 'transparent', s0ink: st.sort === 0 ? '#f0ece6' : '#4d545e',
+      s1bg: st.sort === 1 ? '#232323' : 'transparent', s1ink: st.sort === 1 ? '#f0ece6' : '#4d545e',
+      s2bg: st.sort === 2 ? '#232323' : 'transparent', s2ink: st.sort === 2 ? '#f0ece6' : '#4d545e',
+      sort0: () => this.setState({ sort: 0 }), sort1: () => this.setState({ sort: 1 }), sort2: () => this.setState({ sort: 2 }),
+      items: st.ledger.map((it, i) => ({
+        label: it.label, meta: it.meta, toggle: () => this.toggle(i),
+        boxBg: it.done ? '#232323' : 'transparent', tickOp: it.done ? 1 : 0,
+        ink: it.done ? '#8f8b85' : '#232323', deco: it.done ? 'line-through' : 'none',
+        metaInk: it.done ? '#7d7a74' : (it.meta === 'DUE' || it.meta === 'PIN-UP FRI' ? '#9a4d00' : '#4d545e'),
+      })),
+      doneCount: this.ledgerDone(), total: st.ledger.length,
+      pct: Math.round(this.ledgerDone() / st.ledger.length * 100),
+      pctW: (this.ledgerDone() / st.ledger.length * 100) + '%',
+      mLeft: 'calc(' + (this.ledgerDone() / st.ledger.length * 100) + '% - 10px)',
+      pctNote: (() => { const n = this.ledgerDone(), t = st.ledger.length;
+        if (n === 0) return 'Nothing ticked. Bold way to start a Monday.';
+        if (n === t) return 'All of it. Suspicious, but I will allow it.';
+        if (n >= t - 2) return 'Close. The last two are the ones you always leave.';
+        return (t - n) + ' left, and the studio one is not optional.'; })(),
+      prompt: this.ledgerDone() === st.ledger.length
+        ? 'Everything ticked. I have nothing to hold over you. Go to sleep.'
+        : "No membership, no excuse — push day is a floor and twelve reps. Are we doing it or admiring the floor?",
+      log: st.log,
+      didIt: () => this.say('Did it', "47.5 × 5. Logged, and yes I'm impressed. Don't make it weird."),
+      cantDo: () => this.say("Can't today", "Fine — honest beats silent. It moves to tomorrow 10:00 and the streak survives, once."),
+      streak: st.streak, best: Math.max(st.best, st.streak),
+      streakUnit: st.streak === 1 ? 'DAY CLOSED' : 'DAYS CLOSED',
+      stageName: names[si], stageNote: notes[si],
+      stages: [0,1,2,3,4].map(bump),
+      week: st.week.map((v, i) => ({
+        c: 'MTWTFSS'[i],
+        bg: v === 1 ? '#232323' : v === 0 ? '#fa8317' : '#cbc7c1',
+        ink: v === 1 ? '#f0ece6' : v === 0 ? '#232323' : '#4d545e',
+      })),
+      weekDone: st.week.filter(v => v === 1).length,
+      streakNote: st.streak >= st.best
+        ? 'You are at your own record. Nothing to say, just do not stop.'
+        : (st.best - st.streak) + ' days off your best. He remembers being bigger.',
+
+      flock: (() => {
+        const names = ['HATCHLING','FLUFF','SQUARE MEALS','WELL FED','MAGNIFICENT'];
+        const mine = { id: 'me', name: 'You', streak: st.streak, best: Math.max(st.best, st.streak) };
+        const all = [mine, ...Component.FRIENDS].sort((a, b) => b.streak - a.streak);
+        return all.map(f => {
+          const t = Math.min(1, f.streak / 35), s = 0.17 + t * 0.23, fat = t;
+          const bRx = (34 + fat * 30) * s, bRy = (30 + fat * 20) * s, hR = (20 + fat * 7) * s;
+          const hCx = bRx * 0.42, hCy = -bRy - bRy * 0.72 - hR * 0.42;
+          const bx = hCx + hR * 0.86, by = hCy + hR * 0.1, bl = (16 + fat * 7) * s, bh = (7 + fat * 3) * s;
+          const si = f.streak < 1 ? 0 : f.streak < 7 ? 1 : f.streak < 14 ? 2 : f.streak < 28 ? 3 : 4;
+          return { name: f.name, streak: f.streak, best: f.best, stage: names[si],
+            bg: f.id === 'me' ? '#cbc7c1' : 'transparent',
+            duckFill: f.id === 'me' ? '#232323' : '#8f8b85',
+            bRx, bRy, bCy: -bRy, hCx, hCy, hR,
+            beak: `M${bx} ${by - bh} L${bx + bl} ${by} L${bx} ${by + bh} Z`,
+            pokeLabel: f.id === 'me' ? 'SHARE' : (st.poked.includes(f.id) ? 'POKED' : 'POKE'),
+            poke: () => this.setState(s2 => ({ poked: s2.poked.includes(f.id) ? s2.poked : [...s2.poked, f.id] })) };
+        });
+      })(),
+      flockNote: '5 CLOSED TODAY',
+      flockLine: (() => { const top = [...Component.FRIENDS].sort((a, b) => b.streak - a.streak)[0];
+        if (st.streak > top.streak) return 'You are ahead of ' + top.name + ' by ' + (st.streak - top.streak) + '. Say nothing, just keep going.';
+        if (st.streak === top.streak) return 'Dead level with ' + top.name + '. Whoever blinks first loses their duck.';
+        return top.name + ' is ' + (top.streak - st.streak) + ' ahead and their duck is visibly smugger.'; })(),
+      points: this.points(),
+      pointNote: this.points() < 20
+        ? 'Tick work to earn. Snacks are the only thing points are good for, which is the point.'
+        : 'Enough for a snack. He has been staring at you for an hour.',
+      fedCount: st.fed.length,
+      snacks: Component.SNACKS.map(k => { const owned = st.fed.includes(k.id), can = this.points() >= k.cost;
+        return { name: k.name, cost: k.cost, effect: k.effect, d: k.d,
+          op: owned || can ? 1 : 0.45,
+          bg: owned ? '#fa8317' : '#cbc7c1', icon: '#232323',
+          label: owned ? 'FED' : 'FEED', border: owned ? '#fa8317' : '#232323',
+          btnBg: owned ? '#fa8317' : 'transparent',
+          buy: () => { if (owned || !can) return; this.setState(s => ({ fed: [...s.fed, k.id], spent: s.spent + k.cost })); } }; }),
+      isS0: si === 0, isS1: si === 1, isS2: si === 2, isS3: si === 3, isS4: si === 4,
+      shY: 213, shRx: d.bodyRx * 0.92,
+      bodyRx: d.bodyRx, bodyRy: d.bodyRy, bodyCy: d.bodyCy,
+      wingCx: -d.bodyRx * 0.18, wingCy: d.bodyCy + d.bodyRy * 0.12,
+      wingRx: d.bodyRx * 0.5, wingRy: d.bodyRy * 0.5,
+      tailCx: -d.bodyRx * 0.92, tailCy: d.bodyCy - d.bodyRy * 0.35, tailRx: d.bodyRx * 0.26,
+      headCx: d.headCx, headCy: d.headCy, headR: d.headR,
+      beakD: `M${d.beakX} ${d.beakY - d.beakH} L${d.beakX + d.beakL} ${d.beakY} L${d.beakX} ${d.beakY + d.beakH} Z`,
+      beakLineD: `M${d.beakX + d.beakL * 0.28} ${d.beakY + d.beakH * 0.1} L${d.beakX + d.beakL * 0.72} ${d.beakY + d.beakH * 0.1}`,
+      eyeCx: d.headCx + d.headR * 0.36, eyeCy: d.headCy - d.headR * 0.14, eyeR: Math.max(3, d.headR * 0.2),
+      eyeHiCx: d.headCx + d.headR * 0.46, eyeHiCy: d.headCy - d.headR * 0.26, eyeHiR: Math.max(1.1, d.headR * 0.075),
+      blushCx: d.headCx + d.headR * 0.1, blushCy: d.headCy + d.headR * 0.42, blushR: d.headR * 0.26,
+      footD: (() => { const f = 7 * d.s, x1 = -d.bodyRx * 0.16, x2 = d.bodyRx * 0.3;
+        return `M${x1 - f} -1 L${x1 + f} -1 L${x1} ${-f * 1.5} Z M${x2 - f} -1 L${x2 + f} -1 L${x2} ${-f * 1.5} Z`; })(),
+
+      closeDay: () => this.setState(s => {
+        const w = [...s.week], i = w.indexOf(-1);
+        if (i > -1) w[i] = 1; 
+        return { streak: s.streak + 1, best: Math.max(s.best, s.streak + 1), week: w };
+      }),
+      breakDay: () => this.setState(s => {
+        const w = [...s.week], i = w.indexOf(-1);
+        if (i > -1) w[i] = 0;
+        return { streak: 0, week: w };
+      }),
+
+      t0bg: st.tab === 0 ? '#232323' : 'transparent', t0ink: st.tab === 0 ? '#f0ece6' : '#4d545e',
+      t1bg: st.tab === 1 ? '#232323' : 'transparent', t1ink: st.tab === 1 ? '#f0ece6' : '#4d545e',
+      t2bg: st.tab === 2 ? '#232323' : 'transparent', t2ink: st.tab === 2 ? '#f0ece6' : '#4d545e',
+      t3bg: st.tab === 3 ? '#232323' : 'transparent', t3ink: st.tab === 3 ? '#f0ece6' : '#4d545e',
+      t4bg: st.tab === 4 ? '#232323' : 'transparent', t4ink: st.tab === 4 ? '#f0ece6' : '#4d545e',
+      go0: () => this.setState({ tab: 0 }), go1: () => this.setState({ tab: 1 }),
+      go2: () => this.setState({ tab: 2 }), go3: () => this.setState({ tab: 3 }),
+      go4: () => this.setState({ tab: 4 }),
+    };
+  }
+}
+</script>
+</body>
+</html>

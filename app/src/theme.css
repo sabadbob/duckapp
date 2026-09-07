@@ -1,0 +1,65 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,300..700;1,8..60,300..600&display=swap');
+
+:root {
+  color-scheme: light;
+  --ink: #232323;
+  --paper: #e6e4e4;
+  --phone: #d8d5d0;
+  --panel: #cbc7c1;
+  --line: #b8b4ae;
+  --slate: #4d545e;
+  --grey: #8f8b85;
+  --cream: #f0ece6;
+  --orange: #fa8317;
+  --orange-ink: #9a4d00;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--paper);
+  font-family: 'Source Serif 4', Georgia, serif;
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: #9a4d00; text-decoration: none; }
+a:hover { color: #fa8317; }
+
+.lbl {
+  font-family: 'Archivo', sans-serif; font-weight: 600; font-size: 9.5px;
+  line-height: 1; letter-spacing: .16em; color: var(--slate);
+}
+
+.btn2 {
+  font: 600 11px/1 'Archivo', sans-serif; letter-spacing: .06em; text-transform: uppercase;
+  padding: 13px 14px; border: 2px solid var(--ink); background: transparent; color: var(--ink);
+  cursor: pointer; text-align: left; width: 100%;
+}
+.btn2:hover { background: var(--ink); color: var(--cream); }
+.btn2:active { background: var(--orange-ink); border-color: var(--orange-ink); color: #fff; }
+.btn2:focus-visible { outline: 2px solid var(--orange); outline-offset: 2px; }
+.btn2:disabled { opacity: .4; cursor: not-allowed; }
+.btn2o { border-color: var(--orange); color: #8a4300; background: var(--orange); }
+.btn2o:hover { background: var(--ink); border-color: var(--ink); color: var(--orange); }
+
+.tab {
+  background: transparent; border: 0; border-right: 2px solid var(--ink); padding: 9px 0 8px;
+  display: grid; place-items: center; gap: 5px; cursor: pointer; color: var(--slate);
+  font: 600 7px/1 'Archivo', sans-serif; letter-spacing: .06em; white-space: nowrap;
+}
+.tab:last-child { border-right: 0; }
+.tab:hover { background: var(--panel); }
+.tab:focus-visible { outline: 2px solid var(--orange); outline-offset: -2px; }
+
+.row {
+  display: flex; gap: 12px; align-items: center; padding: 11px 0; border-bottom: 1px solid var(--line);
+  cursor: pointer; text-align: left; width: 100%; background: transparent; border-left: 0; border-right: 0; border-top: 0;
+}
+.row:hover { background: var(--panel); }
+
+.app-root { margin: 0; background: var(--paper); display: grid; place-items: start center; padding: 28px 0; min-height: 100vh; }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: var(--line); }
